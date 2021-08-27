@@ -263,52 +263,33 @@ button {
 
         </style>
     </head>
-    <body style="background-color:  #ffffff;">
+    <body>
+        <h1>Update Data</h1>
+        <form action="/postuserupdate/" class="box"method="POST">
+        {% csrf_token %}
+<h1>Enter the New Data</h1>
+<label for="fname">Your Email :</label>
+<input type="text" id="old_email" name="old_email" value="{{old_email}}" readonly><br><br>
+<label for="fname">User Type :</label>
+<input type="text" id="user_type" name="user_type" value="{{user_type}}" readonly><br><br>
+  <label for="fname">Enter New Address:</label>
+  <input type="text" id="fname" name="newaddress"><br><br>
+  <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="newstate" method="GET" class="form-control" required></select><br><br>
+    <select id ="state" name="newcity" class="form-control" method="GET" required></select><br><br>
+    <script language="javascript">print_state("sts");</script>
+  <label for="fname">Enter New User Id:</label>
+  <input type="text" id="fname" name="newuserid"><br><br>
+  <label for="fname">Enter New Name:</label>
+  <input type="text" id="fname" name="newname"><br><br>
+  <label for="fname">Enter New Phone:</label>
+  <input type="text" id="fname" name="newphone"><br><br>
+  <label for="fname">Enter New Pincode:</label>
+  <input type="text" id="fname" name="newpincode"><br><br>
+  <input type="submit" value="Update Details">
+</form>
+
         
-        <header>
-            <img class= "logo" src={% static "logo23.jpg" %}  alt="logo" height="50px" width="50px" >
-            <!--<img class= "logo" src="/home/templates/logo23.jpg" alt="logo" height="50px" width="50px" > -->
-            <nav class="navbar">
-                
-                <ul>
-                    
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/contact">Contact us</a></li>
-                    
-                   
-                </ul>
-            </nav>
-            <div class="login">
-    
-    
-                <ul>
-    
-                    
-                    <li><a href="/prelogin">LOGIN</a></li>
-                    
-                </ul>
-                
-            </div>
-        </header>
-         
-          
-          <hr >
-          <form class="box" action="/postcheckuserupdate/" method="POST">
-            {% csrf_token %}
-            <h1><strong>Update Data</strong></h1><br>
-            
-        <h2>Enter the details of user you want to Update</h2><br>
-  User Type: <select name= "usertype" method="GET" action="/">
-    <option value= Admin >Admin</option>
-    <option value= Booking >Booking</option>
-    <option value= Dispatch >Dispatch</option>
-    <option value= MIS >Mis</option>
-</select><br><br>
-  <label for="lname">Enter the previous Email:</label>
-  <input type="text" id="email" name="email"><br><br>
-  <input type="submit" value="Check User">
-   </form>     
+        
+        
     </body>
 </html>

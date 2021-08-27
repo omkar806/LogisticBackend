@@ -52,5 +52,6 @@ urlpatterns = [
      path("postmis/" , views.postmis ,name='postmis' ),
      path("producttable/" , views.producttable ,name='producttable' ),
      path("bookingorder1/" , views.bookingorder1 ,name='bookingorder1' ),
+     path("postuserupdate/" , views.postuserupdate ,name='postuserupdate' ),
      path("postbookingorder1/" , views.postbookingorder1 ,name='postbookingorder1' )
 ]
