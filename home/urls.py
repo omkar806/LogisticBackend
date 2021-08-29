@@ -53,5 +53,6 @@ urlpatterns = [
      path("producttable/" , views.producttable ,name='producttable' ),
      path("bookingorder1/" , views.bookingorder1 ,name='bookingorder1' ),
      path("postuserupdate/" , views.postuserupdate ,name='postuserupdate' ),
-     path("postbookingorder1/" , views.postbookingorder1 ,name='postbookingorder1' )
+     path("postbookingorder1/" , views.postbookingorder1 ,name='postbookingorder1' ) ,
+     path("postdispatchuser/" , views.postdispatchuser ,name='postdispatchuser' )
 ]

@@ -449,12 +449,12 @@ def postbookingorder(request):
     
     
     # print(compname)
-    compname = request.POST.get("company_name")
-    db9 = database.child("Data").child("Product").get()
+    # compname = request.POST.get("company_name")
+    # db9 = database.child("Data").child("Product").get()
 
-    for i in db9.each() :
-        if i.val()["Company Name"] == compname : 
-             cost=database.child("Data").child("Product").child(i.key()).child("Cost").get().val()
+    # for i in db9.each() :
+    #     if i.val()["Company Name"] == compname : 
+    #          cost=database.child("Data").child("Product").child(i.key()).child("Cost").get().val()
              
     
     fromcity=request.POST.get("fromcity")
@@ -466,7 +466,7 @@ def postbookingorder(request):
     invoice_no = request.POST.get("invcno")
     noofpckg= request.POST.get("noofpckg")
     description = request.POST.get("description")
-    totalcost = int(cost)*int(noofpckg)
+    # totalcost = int(cost)*int(noofpckg)
     # print(totalcost)
     bill_id = uuid.uuid4()
     return render (request , "confirmbookingorder.html" , {        
@@ -481,7 +481,7 @@ def postbookingorder(request):
                                                                     "noofpckg" : noofpckg,
                                                                      
                                                                     "description" : description ,
-                                                                    "totalcost" :  totalcost  ,
+                                                                    # "totalcost" :  totalcost  ,
                                                                      "bill_id" : bill_id    })
    
 
@@ -516,10 +516,19 @@ def postregisternewproduct(request):
 
 
 def postconfirmbookingorder (request) : 
-    bill_id = request.POST.get("bill_id")
-    totalcost= request.POST.get("totalcost")
-    fromcity = request.POST.get("fromcity")
+
     company_name = request.POST.get("company_name")
+    db9 = database.child("Data").child("Product").get()
+    for i in db9.each() :
+        if i.val()["Company Name"] == company_name : 
+             cost=database.child("Data").child("Product").child(i.key()).child("Cost").get().val()
+
+
+
+    bill_id = request.POST.get("bill_id")
+    # totalcost= request.POST.get("totalcost")
+    fromcity = request.POST.get("fromcity")
+    # company_name = request.POST.get("company_name")
     datee = request.POST.get("datee")
     docket_no = request.POST.get("docket_no")
     destination = request.POST.get("destination")
@@ -527,12 +536,12 @@ def postconfirmbookingorder (request) :
     noofpckg= request.POST.get("noofpckg")
     invcno = request.POST.get("invoice_no")    
     description = request.POST.get("description")
-    
+    totalcost = int(cost)*int(noofpckg)
     data = {
         
         "fromcity" : fromcity ,
         "company_name" : company_name ,
-        "datee"     : datee , 
+        "date"     : datee , 
         "docket_no" : docket_no ,
         "destination" : destination ,
         "partyname" : partyname ,
@@ -560,3 +569,66 @@ def producttable (request) :
     return render (request ,"producttable.html",{'admindata':admindata})
 
 
+def dispatchuser (request) :
+    return render (request , "lh3.html")
+
+
+def postdispatchuser (request) :
+    # start_date=input("Enter start date=")
+    # end_date=input("Enter End date=") 
+    date1 = request.POST.get("date1")
+    date2 = request.POST.get("date2")
+
+    firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
+
+    dates = list(firebase.get("Data/BookingOrder/Orders" , None).values())
+    orderdates=[]
+    for i in dates :
+        for datename,dateval in i.items() : 
+            if datename == "date" :
+                orderdates.append(dateval)
+
+                print(orderdates)
+    company_name1 = request.POST.get("companyname1")
+    booking_db1 = database.child("Data").child("BookingOrder").child("Orders").get()
+    
+    for x in orderdates :
+        if(x>=date1) :
+            if (x<=date2) :
+                for bookingdb in booking_db1.each() :
+                    if bookingdb.val()["date"] == x  :
+                        if bookingdb.val()["company_name"] == company_name1 :
+                            bill_id = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("bill_id").get().val()
+                            from_city = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("fromcity").get().val()
+                            companyname12 = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("company_name").get().val()
+                            datee = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("date").get().val()
+                            description1 = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("description").get().val()
+                            destination = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("destination").get().val()
+                            docketNo = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("docket_no").get().val()
+                            invcno = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("invcno").get().val()
+                            noofpckg = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("noofpckg").get().val()
+                            partyname = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("partyname").get().val()
+                            totalcost = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("totalcost").get().val()
+                            # print(bill_id)
+                            # print(from_city)
+                            return render ( request , "dispatchuser.html" , {
+                                                   "bill_id" : bill_id ,
+                                                    "from_city" : from_city ,
+                                                    "companyname12" : companyname12 ,
+                                                    "datee":datee ,
+                                                    "description1" : description1 ,
+                                                    "destination" : destination ,
+                                                    "docketNo" : docketNo ,
+                                                    "invcno" : invcno ,
+                                                    "noofpckg" : noofpckg ,
+                                                    "partyname" : partyname , 
+                                                    "totalcost" : totalcost 
+                                                   } ) 
+
+
+
+
+
+         
+                                                       
+            
