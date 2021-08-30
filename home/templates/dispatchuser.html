@@ -347,16 +347,12 @@ margin-top: 10px;
 <div class="co">
   
 <ul >
-  <form class="box" action="/postconfirmbookingorder/"  method="POST">
+  <form class="box" action="/dispatchuser/"  method="POST">
     <label style="font-size: 210%; margin-left: 2%;" for="fname" >Confirm order</label><br><br>
   {% csrf_token %}
    <label style="font-size: 130%; margin-left: 2%;" for="fname" >BILL ID:</label>
    
    <input type="text" name="bill_id" style="font-size: 18pt; height: 35px; width:240px; " value={{bill_id}} readonly><br><br>
-   
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Total Cost of Your Selected Quantities :</label>
- 
- <input type="text" name="totalcost" style="font-size: 18pt; height: 35px; width:240px; " value={{totalcost}} readonly><br><br>
  
   <label style="font-size: 130%; margin-left: 2%;" for="fname" >City From which you want to send the Package:</label>
   
@@ -380,16 +376,12 @@ margin-top: 10px;
   
   <label style="font-size: 130%; margin-left: 2%;" for="fname" >Party Name:</label>
   
-  <input type="text" name="partyname" style="font-size: 18pt; height: 35px; width:240px; " value={{party}} readonly><br><br>
+  <input type="text" name="partyname" style="font-size: 18pt; height: 35px; width:240px; " value={{partyname}} readonly><br><br>
   
   <label style="font-size: 130%; margin-left: 2%;" for="fname" >Number Of Packages:</label>
   
   <input type="text" name="noofpckg" style="font-size: 18pt; height: 35px; width:240px; " value={{noofpckg}} readonly><br><br>
-  
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Description(Said to Contain):</label>
-  
-  <input type="text" name="description" style="font-size: 18pt; height: 35px; width:240px; " value={{description}} readonly><br><br>
-  
+    
   <label style="font-size: 130%; margin-left: 2%;" for="fname" >Invoice Number:</label>
   
   <input type="text" name="invoice_no" style="font-size: 18pt; height: 35px; width:240px; " value={{invcno}} readonly><br><br>

@@ -438,25 +438,6 @@ def postbookingorder1 (request) :
     return render(request, 'bookingorder.html' , {"compnames" : compnames , "present_date": present_date})'''
 
 def postbookingorder(request):
-    # firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
-    # msg="Product is Registered Successfully!"
-    # companies=list(firebase.get("/Data/Company",None).values())
-    # compnames=[]
-    # for compdetails in companies:
-    #     for eachcompkey,eachcompval in compdetails.items():
-    #         if eachcompkey=='Company Name':
-    #             compnames.append(eachcompval)
-    
-    
-    # print(compname)
-    # compname = request.POST.get("company_name")
-    # db9 = database.child("Data").child("Product").get()
-
-    # for i in db9.each() :
-    #     if i.val()["Company Name"] == compname : 
-    #          cost=database.child("Data").child("Product").child(i.key()).child("Cost").get().val()
-             
-    
     fromcity=request.POST.get("fromcity")
     company_name = request.POST.get("company_name")
     datee = request.POST.get("datee")
@@ -481,8 +462,7 @@ def postbookingorder(request):
                                                                     "noofpckg" : noofpckg,
                                                                      
                                                                     "description" : description ,
-                                                                    # "totalcost" :  totalcost  ,
-                                                                     "bill_id" : bill_id    })
+                                                                    "bill_id" : bill_id    })
    
 
 def registernewproduct(request):
@@ -554,7 +534,10 @@ def postconfirmbookingorder (request) :
 
     database.child("Data").child("BookingOrder").child("Orders").push(data)
     msg = "Your Order Has Been Placed Successfully !!"
-    return render (request , "lh1.html" , {"msg" : msg})
+    return render (request , "bookingorder.html" , {"msg" : msg,"fromcity" : fromcity ,
+                                                                    "company_name" : company_name,
+                                                                    "datee" : datee , 
+                                                                    "docket_no" : docket_no ,})
 
 def postmis (request) :
     return render (request , "lh2.html")
@@ -602,27 +585,21 @@ def postdispatchuser (request) :
                             from_city = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("fromcity").get().val()
                             companyname12 = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("company_name").get().val()
                             datee = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("date").get().val()
-                            description1 = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("description").get().val()
                             destination = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("destination").get().val()
                             docketNo = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("docket_no").get().val()
                             invcno = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("invcno").get().val()
                             noofpckg = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("noofpckg").get().val()
                             partyname = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("partyname").get().val()
-                            totalcost = database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("totalcost").get().val()
-                            # print(bill_id)
-                            # print(from_city)
                             return render ( request , "dispatchuser.html" , {
                                                    "bill_id" : bill_id ,
                                                     "from_city" : from_city ,
                                                     "companyname12" : companyname12 ,
                                                     "datee":datee ,
-                                                    "description1" : description1 ,
                                                     "destination" : destination ,
                                                     "docketNo" : docketNo ,
                                                     "invcno" : invcno ,
                                                     "noofpckg" : noofpckg ,
-                                                    "partyname" : partyname , 
-                                                    "totalcost" : totalcost 
+                                                    "partyname" : partyname ,
                                                    } ) 
 
 
