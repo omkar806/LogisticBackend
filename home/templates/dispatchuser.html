@@ -1,4 +1,9 @@
 {% load static %}
+{%if msg%}
+<script>
+    window.alert('{{msg}}');
+</script>
+{% endif%}
 <!DOCTYPE html>
 <html>
 <head>
@@ -345,61 +350,31 @@ margin-top: 10px;
         
          
 <div class="co">
-  
-<ul >
-  <form class="box" action="/postconfirmbookingorder/"  method="POST">
-    <label style="font-size: 210%; margin-left: 2%;" for="fname" >Confirm order</label><br><br>
-  {% csrf_token %}
-   <label style="font-size: 130%; margin-left: 2%;" for="fname" >BILL ID:</label>
-   
-   <input type="text" name="bill_id" style="font-size: 18pt; height: 35px; width:240px; " value={{bill_id}} readonly><br><br>
-   
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Total Cost of Your Selected Quantities :</label>
- 
- <input type="text" name="totalcost" style="font-size: 18pt; height: 35px; width:240px; " value={{totalcost}} readonly><br><br>
- 
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >City From which you want to send the Package:</label>
-  
-  <input type="text" name="fromcity" style="font-size: 18pt; height: 35px; width:240px; " value={{from_city}} readonly><br><br>
-  
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Company Name:</label>
-  
-  <input type="text" name="company_name" style="font-size: 18pt; height: 35px; width:240px; " value={{companyname12}} readonly><br><br>
-  
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Date:</label>
-  
-  <input type="text" name="datee" style="font-size: 18pt; height: 35px; width:240px; " value={{datee}} readonly><br><br>
- 
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Docket Number:</label>
-  
-  <input type="text" name="docket_no" style="font-size: 18pt; height: 35px; width:240px; " value={{docketNo}} readonly><br><br>
-
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Destination:</label>
-  
-  <input type="text" name="destination" style="font-size: 18pt; height: 35px; width:240px; " value={{destination}} readonly><br><br>
-  
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Party Name:</label>
-  
-  <input type="text" name="partyname" style="font-size: 18pt; height: 35px; width:240px; " value={{party}} readonly><br><br>
-  
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Number Of Packages:</label>
-  
-  <input type="text" name="noofpckg" style="font-size: 18pt; height: 35px; width:240px; " value={{noofpckg}} readonly><br><br>
-  
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Description(Said to Contain):</label>
-  
-  <input type="text" name="description" style="font-size: 18pt; height: 35px; width:240px; " value={{description}} readonly><br><br>
-  
-  <label style="font-size: 130%; margin-left: 2%;" for="fname" >Invoice Number:</label>
-  
-  <input type="text" name="invoice_no" style="font-size: 18pt; height: 35px; width:240px; " value={{invcno}} readonly><br><br>
- 
-  <input type="submit" name="submit" style="font-size: 18pt; height: 35px; width:240px; " value="Go Back">
-  Want to Delete Order ? <a href="delete" > Click Here to Delete Order </a>
-</ul>
-
-</div>
-  </form>
+  <table border='1'>
+    <caption><strong>DISPATCH ORDERS</strong></caption>
+    <thead>
+     <tr>
+      <th>Bill ID</th>
+      <th>From City</th>
+      <th>Company Name</th>
+      <th>Date</th>
+      <th>Destinaton</th>
+      <th>Pary Name</th>
+      <th>Invoice Number</th>
+      <th>Confirm Order</th>
+     </tr>
+    </thead>
+    <tbody>
+        {%for user in list1%}
+        <tr>
+            {% for row in user.values %}
+            <td>{{row}}</td>
+            {% endfor %}
+            <td><button action='/confirmdispatch/' >Confirm Dispatch</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
     </body>
         
 </html>
