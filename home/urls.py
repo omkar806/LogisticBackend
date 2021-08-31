@@ -55,5 +55,6 @@ urlpatterns = [
      path("postuserupdate/" , views.postuserupdate ,name='postuserupdate' ),
      path("postbookingorder1/" , views.postbookingorder1 ,name='postbookingorder1' ) ,
      path("postdispatchuser/" , views.postdispatchuser ,name='postdispatchuser' ),
-     path("dispatchuser/" , views.dispatchuser ,name='dispatchuser' )
+     path("dispatchuser/" , views.dispatchuser ,name='dispatchuser' ),
+     path("confirmdispatch/" , views.confirmdispatch ,name='confirmdispatch' )
 ]
