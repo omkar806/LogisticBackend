@@ -15,7 +15,7 @@
       <script src={% static "cities.js" %}></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>REGISTER ADMIN</title>
+        <title>Dispatch User</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
@@ -302,19 +302,19 @@ button {
             Search Orders : 
             <div>
             <label style="font-size: 130%; margin-left: 2%;">From Date:</label>
-            <input type="date" name="date1">
+            <input type="date" name="date1" style="font-size: 18px; height: 35px; width:240px; ">
             </div>
 
             <div>
             <label style="font-size: 130%; margin-left: 2%;"> Till Date :</label>
-            <input type="date" name="date2">
+            <input type="date" name="date2" style="font-size: 18px; height: 35px; width:240px; ">
            </div>
             <div>
             
                 <label for="lname" style="font-size: 130%; margin-left: 2%;">From City(Specify City Name):</label>
-                <!--<select name= "compname1" method="GET" action="/" style="width: 170px;">  -->
+                
                 <input type="text" list="brow1" name="cityname" style="font-size: 18px; height: 35px; width:240px; ">
-                <!--<option value= "Select Sender" selected >Select Sender</option> -->
+                
                 <datalist id="brow1" name="cityname">
                 {% for fromcity12 in fromcitylist %}
                 <option value= "{{fromcity12}}" >{{fromcity12}}</option>
