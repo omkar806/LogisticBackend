@@ -248,7 +248,15 @@ def postlogindispatch(request) :
                 user=authe.sign_in_with_email_and_password(email,passwd)
                 session_id=user['idToken']
                 request.session['uid']=str(session_id)
-                return render(request , 'lh3.html')
+                fromcity=list(firebase.get("/Data/BookingOrder/Orders",None).values())
+                fromcitylist=[]
+                for citydetails in fromcity:
+                    for eachcitykey,eachcityval in citydetails.items():
+                        if eachcitykey=='fromcity':
+                            if eachcityval not in fromcitylist:
+                                fromcitylist.append(eachcityval)
+
+                return render(request , 'lh3.html' , {"fromcitylist" : fromcitylist})
             except :
                 tempmail=email
                 msg="Invalid Password!!"

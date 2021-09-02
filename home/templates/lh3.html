@@ -301,19 +301,25 @@ button {
             <h1>DISPATCH USER</h1>
             Search Orders : 
             <div>
-            <label><b>From Date:</b></label>
+            <label style="font-size: 130%; margin-left: 2%;">From Date:</label>
             <input type="date" name="date1">
             </div>
 
             <div>
-            <label><b> Till Date :</b></label>
+            <label style="font-size: 130%; margin-left: 2%;"> Till Date :</label>
             <input type="date" name="date2">
            </div>
             <div>
-            Specify City Name : <br>
-            <label><b> Orders From City:</b></label>
-            <input type="text" name="cityname">
-           </div>
+            
+                <label for="lname" style="font-size: 130%; margin-left: 2%;">From City(Specify City Name):</label>
+                <!--<select name= "compname1" method="GET" action="/" style="width: 170px;">  -->
+                <input type="text" list="brow1" name="cityname" style="font-size: 18px; height: 35px; width:240px; ">
+                <!--<option value= "Select Sender" selected >Select Sender</option> -->
+                <datalist id="brow1" name="cityname">
+                {% for fromcity12 in fromcitylist %}
+                <option value= "{{fromcity12}}" >{{fromcity12}}</option>
+                    {% endfor %}
+                    </datalist>
 
             <input type="submit" name="" value="Submit">
         </form>
