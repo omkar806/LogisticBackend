@@ -570,6 +570,7 @@ def postdispatchuser (request) :
     booking_db1 = database.child("Data").child("BookingOrder").child("Orders").get()
     list1=[]
     temp=[]
+    billid =[]
     for x in orderdates :
         if(x>=date1 and x<=date2) :
             for bookingdb in booking_db1.each() :
@@ -584,8 +585,10 @@ def postdispatchuser (request) :
                                      'invcno' : database.child("Data").child("BookingOrder").child("Orders").child(bookingdb.key()).child("invcno").get().val()
                                      }]
                         temp.append(bill_id)
-    return render (request , "dispatchuser.html", {'list1' : list1})
+                        billid.append(bill_id)
+    return render (request , "dispatchuser.html", {'list1' : list1 , "temp" : temp})
 
-def confirmdispatch(request):
-    bill_id=request.POST.get("bill_id")
-    return render (request , "confirmdispatch.html")
+def confirmdispatch(request):    
+    bill_id=request.POST.get("bill_id123")
+    print(bill_id)
+    return render (request , "confirmdispatch.html" ,{"bill_id" : bill_id})
