@@ -318,7 +318,7 @@
                         <th>Destinaton</th>
                         <th>Pary Name</th>
                         <th>Invoice Number</th>
-                        <th>Confirm Order</th>
+                        {% comment %} <th>Confirm Order</th> {% endcomment %}
                     </tr>
                 </thead>
                 <tbody>
@@ -326,12 +326,18 @@
                     <tr>
                         {% for row in user.values %}
                         <td>{{row}}</td>
-                        {% endfor %} {% for bill__id in temp %}
-                        <button type="submit" name="billidbtn" value={{bill__id}}></button> {% endfor %}
+                        {% endfor %} 
+                        {% comment %} {% for bill__id in temp %}
+                        <button type="submit" name="billidbtn"  value={{bill__id}}></button> 
+                        {% endfor %} {% endcomment %}
                         <!-- <td><button action='/confirmdispatch/' method="POST" >Confirm Dispatch</button></td> -->
                     </tr>
                     {% endfor %}
-
+                      <tr>
+                        {% for bill__id in temp %}
+                        <button type="submit" name="billidbtn"  value={{bill__id}}>Confirm This Order</button> 
+                        {% endfor %}
+                        </tr>
                     <!-- {% for bill__id in temp %}
         <input type='input' name='bill_id123' value={{ bill__id }} readonly>
         {% endfor %} -->

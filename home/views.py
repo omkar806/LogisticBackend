@@ -589,6 +589,7 @@ def postdispatchuser (request) :
     return render (request , "dispatchuser.html", {'list1' : list1 , "temp" : temp})
 
 def confirmdispatch(request):    
-    bill_id=request.POST.get("bill_id123")
-    print(bill_id)
-    return render (request , "confirmdispatch.html" ,{"bill_id" : bill_id})
+    context = {}
+    bill_id=request.POST.get("billidbtn" , None)
+    context['billidbtn'] = bill_id
+    return render (request , "confirmdispatch.html" , context)
