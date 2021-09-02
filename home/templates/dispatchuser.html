@@ -265,6 +265,22 @@
         .box input[type="submit"]:hover {
             background: #bbd6ff;
         }
+        
+        .anybutton {
+            background-color: #583d68;
+            border: none;
+            color: white;
+            padding: 0.5px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 1px;
+            cursor: pointer;
+        }
+        
+        .button123 {
+            width: 100px;
+        }
     </style>
 </head>
 
@@ -318,9 +334,9 @@
                         <th>Destinaton</th>
                         <th>Pary Name</th>
                         <th>Invoice Number</th>
-                        
-                        {% comment %}
-                        <th>Confirm Order</th> {% endcomment %}
+
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -332,13 +348,30 @@
                         <button type="submit" name="billidbtn" value={{bill__id}}></button> {% endfor %} {% endcomment %}
                         <!-- <td><button type="submit" name="billidbtn"  value={% for bill__id in temp %} {{bill__id}} {% endfor %}   class="anybutton">Confirm</button></td> -->
                     </tr>
-                    {% endfor %} 
-                    {% for bill__id in temp %}<button type="submit" name="billidbtn" value={{bill__id}} class="anybutton">Confirm</button>
-                    {% endfor %} 
+                    {% endfor %}
 
 
-         
-                </tbody>
+
+                    <table border='1' align="right" style="margin-top:-7.5em; margin-right:39.2%;">
+                        <thead>
+                            <tr>
+                                <th>Confirm Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for bill__id in temp %}
+                            <tr>
+                                <td>
+                                    <button type="submit" name="billidbtn" value={{bill__id}} class="anybutton button123">Confirm</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+
+
+
+
+                    </tbody>
             </table>
     </form>
 </body>
