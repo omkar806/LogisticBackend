@@ -565,7 +565,7 @@ def postdispatchuser (request) :
             if datename == "date" :
                 orderdates.append(dateval)
 
-                print(orderdates)
+                
     fromcity = request.POST.get("cityname")
     booking_db1 = database.child("Data").child("BookingOrder").child("Orders").get()
     list1=[]
@@ -593,3 +593,21 @@ def confirmdispatch(request):
     bill_id=request.POST.get("billidbtn" , None)
     context['billidbtn'] = bill_id
     return render (request , "confirmdispatch.html" , context)
+
+
+
+def postconfirmdispatch (request) :
+    bill_id = request.POST.get("bill_id")
+    dbdispatch = database.child("Data").child("BookingOrder").child("Orders").get()
+
+    for pcdispatch in dbdispatch.each() :
+        if pcdispatch.val()["bill_id"] == bill_id : 
+            fromity = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("fromcity").get().val(),
+            companyname12=database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("company_name").get().val(),
+            datee = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("date").get().val(),
+            destination = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("destination").get().val(),
+            partyname = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("partyname").get().val(),
+            invcno = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("invcno").get().val()
+
+     
+

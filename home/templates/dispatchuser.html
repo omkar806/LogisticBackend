@@ -318,7 +318,9 @@
                         <th>Destinaton</th>
                         <th>Pary Name</th>
                         <th>Invoice Number</th>
-                        {% comment %} <th>Confirm Order</th> {% endcomment %}
+                        
+                        {% comment %}
+                        <th>Confirm Order</th> {% endcomment %}
                     </tr>
                 </thead>
                 <tbody>
@@ -326,21 +328,15 @@
                     <tr>
                         {% for row in user.values %}
                         <td>{{row}}</td>
-                        {% endfor %} 
-                        {% comment %} {% for bill__id in temp %}
-                        <button type="submit" name="billidbtn"  value={{bill__id}}></button> 
-                        {% endfor %} {% endcomment %}
-                        <!-- <td><button action='/confirmdispatch/' method="POST" >Confirm Dispatch</button></td> -->
+                        {% endfor %} {% comment %} {% for bill__id in temp %}
+                        <button type="submit" name="billidbtn" value={{bill__id}}></button> {% endfor %} {% endcomment %}
+                        <!-- <td><button type="submit" name="billidbtn"  value={% for bill__id in temp %} {{bill__id}} {% endfor %}   class="anybutton">Confirm</button></td> -->
                     </tr>
-                    {% endfor %}
-                      <tr>
-                        {% for bill__id in temp %}
-                        <button type="submit" name="billidbtn"  value={{bill__id}}>Confirm This Order</button> 
-                        {% endfor %}
-                        </tr>
-                    <!-- {% for bill__id in temp %}
-        <input type='input' name='bill_id123' value={{ bill__id }} readonly>
-        {% endfor %} -->
+                    {% endfor %} 
+                    {% for bill__id in temp %}<button type="submit" name="billidbtn" value={{bill__id}} class="anybutton">Confirm</button>{% endfor %} 
+
+
+         
                 </tbody>
             </table>
     </form>
