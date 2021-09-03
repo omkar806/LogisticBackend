@@ -265,17 +265,18 @@
         .box input[type="submit"]:hover {
             background: #bbd6ff;
         }
-        
+        {% comment %} padding: 0.5px 20px; {% endcomment %}
         .anybutton {
             background-color: #583d68;
             border: none;
             color: white;
-            padding: 0.5px 20px;
+            padding: 8px 20px;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             margin: 1px;
             cursor: pointer;
+            
         }
         
         .button123 {
@@ -323,7 +324,7 @@
     <form action="/confirmdispatch/" method="POST">
         {% csrf_token %}
         <div class="co">
-            <table border='1'>
+            <table border='1' width="50%">
                 <caption><strong>DISPATCH ORDERS</strong></caption>
                 <thead>
                     <tr>
@@ -351,11 +352,12 @@
                     {% endfor %}
 
 
-
-                    <table border='1' align="right" style="margin-top:-7.5em; margin-right:39.2%;">
+ {% comment %} style="margin-top:-7.5em; margin-right:39.2%;" {% endcomment %}
+ {% comment %} style="margin-top:-7.8em; margin-right:42.5%;" {% endcomment %}
+                    <table border='1' align="right" style="margin-top:-12.8em; margin-right:42.5%;"  >
                         <thead>
                             <tr>
-                                <th>Confirm Order</th>
+                                <th height="39.3">Confirm Order</th>
                             </tr>
                         </thead>
                         <tbody>
