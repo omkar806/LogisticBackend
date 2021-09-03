@@ -559,8 +559,12 @@ def producttable (request) :
 
 
 def dispatchuser (request) :
+    
     return render (request , "lh3.html")
 
+def dispatchuser1 (request) :
+    
+    return render (request , "dispatchuser.html" )
 
 def postdispatchuser (request) :
     date1 = request.POST.get("date1")
@@ -610,12 +614,23 @@ def postconfirmdispatch (request) :
 
     for pcdispatch in dbdispatch.each() :
         if pcdispatch.val()["bill_id"] == bill_id : 
-            fromity = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("fromcity").get().val(),
-            companyname12=database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("company_name").get().val(),
-            datee = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("date").get().val(),
-            destination = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("destination").get().val(),
-            partyname = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("partyname").get().val(),
+            fromcity = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("fromcity").get().val()
+            companyname12=database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("company_name").get().val()
+            datee = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("date").get().val()
+            destination = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("destination").get().val()
+            partyname = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("partyname").get().val()
             invcno = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("invcno").get().val()
+            data = {
+                "fromcity" : fromcity ,
+                "company_name" : companyname12 ,
+                "date" : datee ,
+                "destination" : destination ,
+                "partyname" : partyname ,
+                "invcno" : invcno
+                }
+            database.child("Data").child("ConfirmedOrders").child("OrderDetails").push(data)
+    msg = "Your Dispatch Confirmed !! Message has been sent to Admin !!"
+    return render (request ,"lh3.html", {"msg" : msg})
 
      
 
