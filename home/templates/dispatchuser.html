@@ -1,8 +1,9 @@
-{% load static %} {%if msg%}
+{% load static %} 
+{% if msg1 %}
 <script>
-    window.alert('{{msg}}');
+    window.alert('{{msg1}}');
 </script>
-{% endif%}
+{% endif %}
 <!DOCTYPE html>
 <html>
 
@@ -265,6 +266,23 @@
         .box input[type="submit"]:hover {
             background: #bbd6ff;
         }
+        {% comment %} padding: 0.5px 20px; {% endcomment %}
+        .anybutton {
+            background-color: #583d68;
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 1px;
+            cursor: pointer;
+            
+        }
+        
+        .button123 {
+            width: 100px;
+        }
     </style>
 </head>
 
@@ -307,7 +325,7 @@
     <form action="/confirmdispatch/" method="POST">
         {% csrf_token %}
         <div class="co">
-            <table border='1'>
+            <table border='1' width="50%">
                 <caption><strong>DISPATCH ORDERS</strong></caption>
                 <thead>
                     <tr>
@@ -318,13 +336,13 @@
                         <th>Destinaton</th>
                         <th>Pary Name</th>
                         <th>Invoice Number</th>
-                        
-                        
-                        <th>Confirm Order</th> 
+
+
+
                     </tr>
                 </thead>
                 <tbody>
-                    {%for user in list1%}
+                    {% for user in list1 %}
                     <tr>
                         {% for row in user.values %}
                         <td>{{row}}</td>
@@ -332,13 +350,32 @@
                         <button type="submit" name="billidbtn" value={{bill__id}}></button> {% endfor %} {% endcomment %}
                         <!-- <td><button type="submit" name="billidbtn"  value={% for bill__id in temp %} {{bill__id}} {% endfor %}   class="anybutton">Confirm</button></td> -->
                     </tr>
-                    {% endfor %} 
-                    {% for bill__id in temp %}<tr><button type="submit" name="billidbtn" value={{bill__id}} class="anybutton">Confirm</button></tr>
-                    {% endfor %} 
+                    {% endfor %}
 
 
-         
-                </tbody>
+ {% comment %} style="margin-top:-7.5em; margin-right:39.2%;" {% endcomment %}
+ {% comment %} style="margin-top:-7.8em; margin-right:42.5%;" {% endcomment %}
+                    <table border='1' align="right" style="margin-top:-12.8em; margin-right:42.5%;"  >
+                        <thead>
+                            <tr>
+                                <th height="39.3">Confirm Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for bill__id in temp %}
+                            <tr>
+                                <td>
+                                    <button type="submit" name="billidbtn" value={{bill__id}} class="anybutton button123">Confirm</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                    </table>
+
+
+
+
+                    </tbody>
             </table>
     </form>
 </body>
