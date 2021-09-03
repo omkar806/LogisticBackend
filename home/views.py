@@ -256,7 +256,7 @@ def postlogindispatch(request) :
                             if eachcityval not in fromcitylist:
                                 fromcitylist.append(eachcityval)
 
-                return render(request , 'lh3.html' , {"fromcitylist" : fromcitylist})
+                return render(request , 'dispatchpanel.html' , {"fromcitylist" : fromcitylist})
             except :
                 tempmail=email
                 msg="Invalid Password!!"
@@ -275,6 +275,10 @@ def lh2(request):
 def lh3(request):
      messages.success(request, 'You have successfully logged in')  
      pass
+def dispatchpanel(request):
+    return render(request , "dispatchpanel.html") 
+def dispatchconfirm(request):
+    return render(request , "dispatchconfirm.html")
 def postresetbooking (request) :
     email = request.POST.get("email")
     try :

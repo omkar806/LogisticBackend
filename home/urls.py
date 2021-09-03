@@ -58,5 +58,7 @@ urlpatterns = [
      path("dispatchuser/" , views.dispatchuser ,name='dispatchuser' ),
      path("dispatchuser1/" , views.dispatchuser1 ,name='dispatchuser1' ),
      path("confirmdispatch/" , views.confirmdispatch ,name='confirmdispatch' ),
-     path("postconfirmdispatch/" , views.postconfirmdispatch ,name='postconfirmdispatch' )
+     path("postconfirmdispatch/" , views.postconfirmdispatch ,name='postconfirmdispatch' ),
+     path("dispatchpanel/" , views.dispatchpanel ,name='dispatchpanel' ),
+     path("dispatchconfirm/" , views.dispatchconfirm ,name='dispatchconfirm' )
 ]
