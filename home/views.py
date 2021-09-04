@@ -278,7 +278,8 @@ def lh3(request):
 def dispatchpanel(request):
     return render(request , "dispatchpanel.html") 
 def dispatchconfirm(request):
-    return render(request , "dispatchconfirm.html")
+  
+    return render(request , "dispatchconfirm.html" )
 def postresetbooking (request) :
     email = request.POST.get("email")
     try :
@@ -563,8 +564,17 @@ def producttable (request) :
 
 
 def dispatchuser (request) :
+    firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
+    fromcity=list(firebase.get("/Data/BookingOrder/Orders",None).values())
+    fromcitylist=[]
+    for citydetails in fromcity:
+        for eachcitykey,eachcityval in citydetails.items():
+            if eachcitykey=='fromcity':
+                if eachcityval not in fromcitylist:
+                    fromcitylist.append(eachcityval)
     
-    return render (request , "lh3.html")
+    
+    return render (request , "lh3.html" , {"fromcitylist" : fromcitylist})
 
 def dispatchuser1 (request) :
     
