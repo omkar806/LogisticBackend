@@ -1,297 +1,136 @@
-
-{% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="wx.css"> -->
-
-    <style>
-      
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-
-
-}
-a{
-text-decoration: none;
-}
-
-header{
-
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 30px ,10%;
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-background-color: #a4ebf3;
-/* background-color: #24242A; */
-}
-
-.navbar{
-background-color: #a4ebf3;
-border-radius: 30px;
-font-family: 'Lexend Deca', sans-serif;
-
-}
-
-.navbar li{
-float:left;
-list-style: none; 
-margin: 13px 20px;
-}
-.navbar ul{
-overflow: auto;
-}
-
-.navbar li a{
-padding: 3px 3px;
-text-decoration: none;
-color: rgb(0, 0, 0);
-
-
-transition: all 0.3s ease 0s;
-}
-
-
-
-
-
-
-
-
-.navbar li a:hover{
-        color: #0096FF;
-    }
-
-
-
-
-.logo{
-cursor: pointer;
-margin-left: 15px;
-margin-top: 10px;
-margin-bottom: 10px;
-}
-
-
-.login li{
-    
-    float:left;
-    list-style: none; 
-    margin: 13px 20px;
-    font-family: 'Lexend Deca', sans-serif;
-    font-weight: bold;
-}
-.login ul{
-    overflow: auto;
-}
-
-.login li a{
-    padding: 3px 3px;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-family: 'Lexend Deca', sans-serif;
-    
-    transition: all 0.3s ease 0s;
-}
-
-
-
-
-
-
-
-
-.login li a:hover{
-            color: #0096FF;
-
-        }
-
-.line{
-
-color:#0096FF ;
-}
-
-/* .fix{
-
-
-    
-    
-    /* display: block; */
-  
-    
-    /* overflow: hidden; 
-  
-}  */
-
-.text1{
-
-display: flex;
-margin-top: 30px;
-
-justify-content: center;
-color:  	#242424;
-/* vertical-align: middle; */
-width: 73%;
-  margin-left: auto;
-  margin-right: auto;
-
-
-
-
-text-decoration: none;
-border: rgb(0, 0, 0) 2px solid;
-/* border-width: 50px; */
-border-radius: 20px;
-margin-bottom: 20px;
-
-
-}
-
-
-.text1 li{
-
-list-style: none;
-
-padding: 40px;
-}
-.text1 ul{
-list-style: none;
-
-}
-
-.img2 {
-
-
-padding: 10px 10px;
-
-
-}
-button{
-
-display: block;
-
-
-
-}
-
-button {
-
-    /* position: absolute; */
-    /* top: 520px; */
-    border-radius: 20px;
-    /* left: 500px; */
-    border: none;
-    
-    padding: 16px 30px;
-    text-align: center;
-    text-decoration: none;
-    color: #242424;
-    
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  
-}
-
-.button1 {
-background-color: #c1f3fa; 
-color: #020202; 
-text-decoration: none;
-border: 2px solid rgb(0, 0, 0);
-}
-
-.button1:hover {
-background-color:#8ccaf7;
-color: rgb(0, 0, 0);
-} 
-
-
-
-    </style>
-</head>
-<body style="background-color:  #ffffff;">
-    <header>
-        <img class= "logo" src={% static "logo23.jpg" %}  alt="logo" height="50px" width="50px" >
-        <!--<img class= "logo" src="/home/templates/logo23.jpg" alt="logo" height="50px" width="50px" > -->
-        <nav class="navbar">
+  </head>
+  <body>
+    <div style="background-image: linear-gradient(45deg ,lightblue ,white) ; height: 75vh; padding-bottom: 20px;" class="start">
+
+      <div class="mynav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-5">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="font-size: 22px;" href="#">Company-name</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Services
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                  </li>
+                  
+                </ul>
+                <form class="d-flex">
+                  <a  class="nav-link nav-item" href="/prelogin.html">Login</a>
+                  
+                </form>
+              </div>
+            </div>
+          </nav>
+          <h1 class="text-center head">A new era of Transportation</h1>
+          <!-- <button class="button text-center"><span>Hover </span></button> -->
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary my-4 btn-lg mb-5">Proceed</button>
             
-            <ul>
-                
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/contact">Contact us</a></li>
-                
-               
-            </ul>
-        </nav>
-        <div class="login">
-
-
-            <ul>
-
-                
-                <li><a href="/prelogin">LOGIN</a></li>
-                
-            </ul>
-            
-        </div>
-    </header>
-
-    
-
-        <hr >
-        
-   <div class="fix">
-       <!-- <img src={% static "blue.jpg" %} alt="background" height="100%" >  -->
-       <!--<img src="/home/static/1092758.jpg" alt="background" height="100%" >-->
-    </div>
-
-
-    <div class="text1">
-      <ul>
           
-          <li> <h2>We Deliever You the Best we have got !</h2></li>
-          <hr>
-          <li><h2>Best in Business since 2002 and Counting</h2></li>
-          <hr>
-          <li><h2>Client Satisfaction Guaranteed</h2></li>
-          <hr>
-      </ul>
-      <div class="img2">
-        <img src={% static "7.jpg" %} alt="img" width="450px" height="370px" style="border-radius: 20px;" >
-        <!--<img src="7.jpg" alt="img" width="450px" height="370px" style="border-radius: 20px;">-->
-    </div>
-    <!-- <button type="button"  class="button1 "><a  href = "/prelogin" >JOIN NOW</a></button> -->
+          </div>
+        </div>
+        
+        <div class="container col-xxl-8 px-4 py-lg-5">
+          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+              <img src="truckop.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold lh-1 mb-3 my-lg-5">Best in Business</h1>
+              <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magnam voluptatibus ratione! Qui deleniti voluptas odio eos quaerat iure eveniet ratione necessitatibus magnam, dolore, repellendus pariatur ipsa sapiente dolores natus ipsum quod sint, quae maiores distinctio officia temporibus quidem. Quas dolor vero modi tenetur excepturi, soluta atque eius distinctio nesciunt!</p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Enroll</button>
+                <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="bg-light p-5 rounded mt-3">
+    <h1>Quality Service</h1>
+    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, blanditiis.</p>
+    <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">Register »</a>
   </div>
 
-    
+<style>
+  footer a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  footer a:hover{
+    color:rgb(255, 255, 255)
+  }
+  footer{
+    color: rgb(255, 255, 255);
+  }
+</style>
+  <footer class="bg-secondary">
+    <div class="container py-4 ">
+      <div class="row">
+        <div class="col-lg-3">
+          <h4>Adderss</h4>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur?</p>
+        </div>
+        <div class="col-lg-3">
+          <h4>Useful Links</h4>
+          <ul class="list-unstyled">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h4>Contact</h4>
+          <p><strong>Email: </strong>email@email.com</p>
+          <p><strong>Phone: </strong> 0000000000</p><br>
 
+        </div>
+        <div class="col-lg-3">
+          <h4>Feedback</h4>
+          <p>use contact us</p>
+        </div>
+      </div>
+    </div>
 
-    <!-- <a href="/prelogin"><button class="button button1" href = "/prelogin">JOIN NOW</button></a> -->
+  </footer>
+          <!-- Optional JavaScript; choose one of the two! -->
+          
+          <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
-    <a type="button"  class="button1 " style=" margin: auto; " href = "/prelogin"><button class="button1 " style=" margin: auto; " href = "/prelogin" >JOIN NOW</button></a>
-
-    </body>
-
-    
-
-        
-      
-        
-</html>  
-
-
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    -->
+  </body>
+  </html>
