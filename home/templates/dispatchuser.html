@@ -1,5 +1,4 @@
-{% load static %} 
-{% if msg1 %}
+{% load static %} {% if msg1 %}
 <script>
     window.alert('{{msg1}}');
 </script>
@@ -209,24 +208,6 @@
             font-weight: 500;
         }
         
-        .box input[type="text"],
-        .box input[type="password"],
-        .box input[type="number"],
-        .box input[type="phone"] {
-            border: 0;
-            background: none;
-            display: inline;
-            margin: 20px auto;
-            text-align: center;
-            border: 2px solid #2f79aa;
-            padding: 14px 40px;
-            width: 400px;
-            outline: none;
-            color: white;
-            border-radius: 24px;
-            transition: 0.25s;
-        }
-        
         .box select {
             border: 0;
             background: none;
@@ -240,12 +221,6 @@
             color: black;
             border-radius: 24px;
             transition: 0.25s;
-        }
-        
-        .box input[type="text"]:focus,
-        .box input[type="password"]:focus {
-            width: 580px;
-            border-color: #1eafc2;
         }
         
         .box input[type="submit"] {
@@ -266,7 +241,16 @@
         .box input[type="submit"]:hover {
             background: #bbd6ff;
         }
-        {% comment %} padding: 0.5px 20px; {% endcomment %}
+        
+        {
+            % comment %
+        }
+        
+        padding: 0.5px 20px;
+        {
+            % endcomment %
+        }
+        
         .anybutton {
             background-color: #583d68;
             border: none;
@@ -277,16 +261,22 @@
             font-size: 16px;
             margin: 1px;
             cursor: pointer;
-            
         }
         
         .button123 {
             width: 100px;
         }
+        
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .question position: relative padding: 10px 0 &:first-of-type padding-top: 0 &:last-of-type padding-bottom: 0 label @extend .transition transform-origin: left center color: $red font-weight: 100 letter-spacing: 0.01em font-size: 17px box-sizing: border-box padding: 10px 15px display: block position: absolute margin-top: -40px z-index: 2 pointer-events: none input[type="text"] @extend .transition appearance: none background-color: none border: 1px solid $red line-height: 0 font-size: 17px width: 100% display: block box-sizing: border-box padding: 10px 15px border-radius: 60px color: $red font-weight: 100 letter-spacing: 0.01em position: relative z-index: 1 &:focus outline: none background: $red color: white margin-top: 30px &:valid margin-top: 30px &:focus~label @include translate( 0, -35px) &:valid~label text-transform: uppercase font-style: italic @include transform( translate( 5px, -35px) scale(0.6))
     </style>
 </head>
 
-<body style="background-color:  #ffffff;">
+<body style="background-color:  #ffffff">
     <header>
         <img class="logo" src=/static/logo23.jpg alt="logo" height="50px" width="50px">
 
@@ -325,7 +315,9 @@
     <form action="/confirmdispatch/" method="POST">
         {% csrf_token %}
         <div class="co">
-            <table border='1' >
+            {% comment %} Bill_ID Selected :<input type="text" name="bill_id" id="billid"><br><br>
+            <button type=submit class="anybutton">Submit</button> {% endcomment %}
+            <table border='1' width="50%" id="table" class="center">
                 <caption><strong>DISPATCH ORDERS</strong></caption>
                 <thead>
                     <tr>
@@ -346,19 +338,17 @@
                     <tr>
                         {% for row in user.values %}
                         <td>{{row}}</td>
-                        {% endfor %} {% comment %} {% for bill__id in temp %}
-                        <button type="submit" name="billidbtn" value={{bill__id}}></button> {% endfor %} {% endcomment %}
-                        <!-- <td><button type="submit" name="billidbtn"  value={% for bill__id in temp %} {{bill__id}} {% endfor %}   class="anybutton">Confirm</button></td> -->
+
+                        {% endfor %}
+
+
+
                     </tr>
-                    {% endfor %}
-
-
- {% comment %} style="margin-top:-7.5em; margin-right:39.2%;" {% endcomment %}
- {% comment %} style="margin-top:-7.8em; margin-right:42.5%;" {% endcomment %}
-                    <table border='1' align="right" style="margin-top:-4em; margin-right:45%;"  >
+                    {% endfor %} {% comment %} style="margin-top:-7.5em; margin-right:39.2%;" {% endcomment %} {% comment %} style="margin-top:-7.8em; margin-right:42.5%;" {% endcomment %} {% comment %}
+                    <table border='1' align="right" style="margin-top:-12.8em; margin-right:42.5%;">
                         <thead>
                             <tr>
-                                <th >Confirm Order</th>
+                                <th height="39.3">Confirm Order</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -369,14 +359,33 @@
                                 </td>
                             </tr>
                             {% endfor %}
-                            </tbody>
-                    </table>
+                        </tbody>
+                    </table> {% endcomment %}
 
 
 
 
-                    </tbody>
-            </table>
+                </tbody>
+            </table><br><br>
+            <div class="question">
+                <label> Bill_ID Selected :</label><input type="text" name="bill_id" id="billid" required readonly/><br><br>
+
+            </div>
+            <button type=submit class="anybutton">Submit</button>
+            <script>
+                var table = document.getElementById('table');
+
+                for (var i = 1; i < table.rows.length; i++) {
+                    table.rows[i].onclick = function() {
+                        //rIndex = this.rowIndex;
+                        document.getElementById("billid").value = this.cells[0].innerHTML;
+
+                    };
+                }
+            </script>
+
+
+
     </form>
 </body>
 

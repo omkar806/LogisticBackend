@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,128 +10,135 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Home</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div style="background-image: linear-gradient(45deg ,lightblue ,white) ; height: 75vh; padding-bottom: 20px;" class="start">
 
-      <div class="mynav">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-5">
-            <div class="container-fluid">
-              <a class="navbar-brand" style="font-size: 22px;" href="#">Company-name</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="mynav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-5">
+                <div class="container-fluid">
+                    <a class="navbar-brand" style="font-size: 22px;" href="#">Company-name</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Services
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
-                  </li>
-                  
-                </ul>
-                <form class="d-flex">
-                  <a  class="nav-link nav-item" href="/prelogin.html">Login</a>
-                  
-                </form>
-              </div>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+
+                        </ul>
+                        <form class="d-flex">
+                            <a class="nav-link nav-item" href="/prelogin">Login</a>
+
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <h1 class="text-center head">A new era of Transportation</h1>
+            <!-- <button class="button text-center"><span>Hover </span></button> -->
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-primary my-4 btn-lg mb-5"> <a href="{% url 'prelogin' %}" style="color: rgb(241, 236, 236)"> Proceed </a></button>
+
+
             </div>
-          </nav>
-          <h1 class="text-center head">A new era of Transportation</h1>
-          <!-- <button class="button text-center"><span>Hover </span></button> -->
-          <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary my-4 btn-lg mb-5">Proceed</button>
-            
-          
-          </div>
         </div>
-        
+
         <div class="container col-xxl-8 px-4 py-lg-5">
-          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-              <img src="truckop.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="truckop.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold lh-1 mb-3 my-lg-5">Best in Business</h1>
+                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magnam voluptatibus ratione! Qui deleniti voluptas odio eos quaerat iure eveniet ratione necessitatibus magnam, dolore, repellendus pariatur ipsa sapiente dolores natus
+                        ipsum quod sint, quae maiores distinctio officia temporibus quidem. Quas dolor vero modi tenetur excepturi, soluta atque eius distinctio nesciunt!</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Enroll</button>
+                        <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> -->
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6">
-              <h1 class="display-5 fw-bold lh-1 mb-3 my-lg-5">Best in Business</h1>
-              <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magnam voluptatibus ratione! Qui deleniti voluptas odio eos quaerat iure eveniet ratione necessitatibus magnam, dolore, repellendus pariatur ipsa sapiente dolores natus ipsum quod sint, quae maiores distinctio officia temporibus quidem. Quas dolor vero modi tenetur excepturi, soluta atque eius distinctio nesciunt!</p>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Enroll</button>
-                <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> -->
-              </div>
+        </div>
+        <div class="bg-light p-5 rounded mt-3">
+            <h1>Quality Service</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, blanditiis.</p>
+            <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">Register »</a>
+        </div>
+
+        <style>
+            footer a {
+                color: rgb(255, 255, 255);
+                text-decoration: none;
+            }
+            
+            footer a:hover {
+                color: rgb(255, 255, 255)
+            }
+            
+            footer {
+                color: rgb(255, 255, 255);
+            }
+        </style>
+        <footer class="bg-secondary">
+            <div class="container py-4 ">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h4>Adderss</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur?</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>Useful Links</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="">Home</a></li>
+                            <li><a href="">About</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>Contact</h4>
+                        <p><strong>Email: </strong>email@email.com</p>
+                        <p><strong>Phone: </strong> 0000000000</p><br>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>Feedback</h4>
+                        <p>use contact us</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-       <div class="bg-light p-5 rounded mt-3">
-    <h1>Quality Service</h1>
-    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, blanditiis.</p>
-    <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">Register »</a>
-  </div>
 
-<style>
-  footer a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-  }
-  footer a:hover{
-    color:rgb(255, 255, 255)
-  }
-  footer{
-    color: rgb(255, 255, 255);
-  }
-</style>
-  <footer class="bg-secondary">
-    <div class="container py-4 ">
-      <div class="row">
-        <div class="col-lg-3">
-          <h4>Adderss</h4>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur?</p>
-        </div>
-        <div class="col-lg-3">
-          <h4>Useful Links</h4>
-          <ul class="list-unstyled">
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3">
-          <h4>Contact</h4>
-          <p><strong>Email: </strong>email@email.com</p>
-          <p><strong>Phone: </strong> 0000000000</p><br>
+        </footer>
+        <!-- Optional JavaScript; choose one of the two! -->
 
-        </div>
-        <div class="col-lg-3">
-          <h4>Feedback</h4>
-          <p>use contact us</p>
-        </div>
-      </div>
-    </div>
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
-  </footer>
-          <!-- Optional JavaScript; choose one of the two! -->
-          
-          <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
     -->
-  </body>
-  </html>
+</body>
+
+</html>
