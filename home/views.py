@@ -560,7 +560,7 @@ def producttable (request) :
     
    
     #print(data[0]['address'])
-    return render (request ,"producttable.html",{'admindata':admindata})
+    return render (request ,"product_table.html",{'admindata':admindata})
 
 
 def dispatchuser (request) :
@@ -615,17 +615,17 @@ def postdispatchuser (request) :
     return render (request , "dispatchuser.html", {'list1' : list1 , "temp" : temp})
 
 def confirmdispatch(request):    
-    context = {}
-    bill_id=request.POST.get("billidbtn" , None)
-    context['billidbtn'] = bill_id
-    return render (request , "confirmdispatch.html" , context)
+    
+    bill_id=request.POST.get("bill_id" , None)
+    
+    return render (request , "confirmdispatch.html",{"bill_id":bill_id})
 
 
 
 def postconfirmdispatch (request) :
     bill_id = request.POST.get("bill_id")
     dbdispatch = database.child("Data").child("BookingOrder").child("Orders").get()
-
+    
     for pcdispatch in dbdispatch.each() :
         if pcdispatch.val()["bill_id"] == bill_id : 
             fromcity = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("fromcity").get().val()
@@ -643,8 +643,20 @@ def postconfirmdispatch (request) :
                 "invcno" : invcno
                 }
             database.child("Data").child("ConfirmedOrders").child("OrderDetails").push(data)
+
+    for deletedispatch in dbdispatch.each():
+        if deletedispatch.val()['bill_id'] == bill_id :
+            database.child("Data").child("BookingOrder").child("Orders").child(deletedispatch.key()).remove()
+        firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
+    fromcity=list(firebase.get("/Data/BookingOrder/Orders",None).values())
+    fromcitylist=[]
+    for citydetails in fromcity:
+        for eachcitykey,eachcityval in citydetails.items():
+            if eachcitykey=='fromcity':
+                if eachcityval not in fromcitylist:
+                    fromcitylist.append(eachcityval)
     msg = "Your Dispatch Confirmed !! Message has been sent to Admin !!"
-    return render (request ,"lh3.html", {"msg" : msg})
+    return render (request ,"lh3.html", {"msg" : msg ,"fromcitylist" : fromcitylist})
 
      
 
