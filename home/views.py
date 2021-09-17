@@ -58,7 +58,8 @@ def registerbooking (request) :
 def registerdispatch (request) :
     return render(request , "registerdispatch.html")    
 def registermis (request) :
-    return render(request , "registermis.html")    
+    return render(request , "registermis.html")
+
 def postregisteradmin (request) :
     email = request.POST.get('email')
     passw1 = request.POST.get('pass')
@@ -248,6 +249,8 @@ def postlogindispatch(request) :
                 user=authe.sign_in_with_email_and_password(email,passwd)
                 session_id=user['idToken']
                 request.session['uid']=str(session_id)
+                name = user['Name']
+                id1 = user['User Id']
                 fromcity=list(firebase.get("/Data/BookingOrder/Orders",None).values())
                 fromcitylist=[]
                 for citydetails in fromcity:
@@ -255,12 +258,18 @@ def postlogindispatch(request) :
                         if eachcitykey=='fromcity':
                             if eachcityval not in fromcitylist:
                                 fromcitylist.append(eachcityval)
-
-                return render(request , 'dispatchpanel.html' , {"fromcitylist" : fromcitylist})
+                
+                data1 = db.child("Data").child("Signup").child("Dispatch").get()
+                for i in data1.each() : 
+                    if i.val()['Email']==email :
+                        name2=db.child("Data").child("Signup").child("Dispatch").child(i.key()).child("Name").get().val()
+                        id2=db.child("Data").child("Signup").child("Dispatch").child(i.key()).child("User Id").get().val()
+    
+                return render(request , 'dispatchpanel.html' , {"fromcitylist" : fromcitylist,"name_":name2, "id_":id2})
             except :
                 tempmail=email
                 msg="Invalid Password!!"
-                return render(request,"dispatchlogin.html",{"msg":msg,"tempmail":tempmail})   
+                return render(request,"dispatchlogin.html",{"msg":msg,"tempmail":tempmail })   
     if flag==0:      
         msg="Invalid Credentials!!Please ChecK your Data"
         return render(request,"dispatchlogin.html",{"msg":msg})

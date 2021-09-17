@@ -61,4 +61,5 @@ urlpatterns = [
      path("postconfirmdispatch/" , views.postconfirmdispatch ,name='postconfirmdispatch' ),
      path("dispatchpanel/" , views.dispatchpanel ,name='dispatchpanel' ),
      path("dispatchconfirm/" , views.dispatchconfirm ,name='dispatchconfirm' )
+     
 ]
