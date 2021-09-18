@@ -164,7 +164,6 @@
             color: #020202;
             text-decoration: none;
             border: 2px solid rgb(0, 0, 0);
-            
         }
         
         .button1:hover {
@@ -295,10 +294,10 @@
             text-align: center;
             align-items: center;
         }
-        .container{  
-        text-align: center;  
-   
-        }  
+        
+        .container {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -340,7 +339,7 @@
     <hr>
     <br><br>
 
-     <div class="co"> 
+    <div class="co">
 
         <form class="box" action="/postconfirmdispatch/" method="POST">
             {% csrf_token %}
@@ -348,9 +347,11 @@
 
             <label style="font-size: 130%; margin-left: 2%;" for="fname" class="label">Selected Order:</label>
             <input style="font-size: 18pt; height: 35px; width:240px;" type="text" name="bill_id" value={{bill_id}} readonly><br><br>
-             <div class= "container">
-            <button type="submit" name="confirmorder" class="button1 button">Confirm Order</button>
-            <li href="/dispatchuser1"><button class="button1 button" href="/dispatchuser1"><a href="/dispatchuser1">Go Back</a></button></li>
+            <div class="container">
+                <label>Dispatch this order User {{userid2}} </label>
+                <input type="hidden" name="hiddenuserid3" value={{userid2}}>
+                <button type="submit" name="confirmorder" class="button1 button">Confirm Order</button>
+                <li href="/dispatchuser1"><button class="button1 button" href="/dispatchuser1"><a href="/dispatchuser1">Go Back</a></button></li>
             </div>
 
 

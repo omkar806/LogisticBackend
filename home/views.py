@@ -236,40 +236,35 @@ def postloginmis(request) :
 def postlogindispatch(request) :
     email = request.POST.get('username')
     passwd =  request.POST.get('password')
+    user_id = request.POST.get('userid')
     firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
     result=firebase.get('/Data/Signup/Dispatch', None)
     flag=0
     tempmail='0'
     msg='0'
     for userid,user in result.items():
-        if email==user['Email'] :    
-            flag=1
-            # if there is no error then signin the user with given email and password
-            try:
-                user=authe.sign_in_with_email_and_password(email,passwd)
-                session_id=user['idToken']
-                request.session['uid']=str(session_id)
-                name = user['Name']
-                id1 = user['User Id']
-                fromcity=list(firebase.get("/Data/BookingOrder/Orders",None).values())
-                fromcitylist=[]
-                for citydetails in fromcity:
-                    for eachcitykey,eachcityval in citydetails.items():
-                        if eachcitykey=='fromcity':
-                            if eachcityval not in fromcitylist:
-                                fromcitylist.append(eachcityval)
-                
-                data1 = db.child("Data").child("Signup").child("Dispatch").get()
-                for i in data1.each() : 
-                    if i.val()['Email']==email :
-                        name2=db.child("Data").child("Signup").child("Dispatch").child(i.key()).child("Name").get().val()
-                        id2=db.child("Data").child("Signup").child("Dispatch").child(i.key()).child("User Id").get().val()
-    
-                return render(request , 'dispatchpanel.html' , {"fromcitylist" : fromcitylist,"name_":name2, "id_":id2})
-            except :
-                tempmail=email
-                msg="Invalid Password!!"
-                return render(request,"dispatchlogin.html",{"msg":msg,"tempmail":tempmail })   
+        if user_id == user['User Id'] :
+            if email==user['Email'] :    
+                flag=1
+                # if there is no error then signin the user with given email and password
+                try:
+                    user=authe.sign_in_with_email_and_password(email,passwd)
+                    session_id=user['idToken']
+                    request.session['uid']=str(session_id)
+                    fromcity=list(firebase.get("/Data/BookingOrder/Orders",None).values())
+                    fromcitylist=[]
+                    for citydetails in fromcity:
+                        for eachcitykey,eachcityval in citydetails.items():
+                            if eachcitykey=='fromcity':
+                                if eachcityval not in fromcitylist:
+                                    fromcitylist.append(eachcityval)
+                    
+
+                    return render(request , 'lh3.html' , {"fromcitylist" : fromcitylist , "user_id" : user_id})
+                except :
+                    tempmail=email
+                    msg="Invalid Password!!"
+                    return render(request,"dispatchlogin.html",{"msg":msg,"tempmail":tempmail })   
     if flag==0:      
         msg="Invalid Credentials!!Please ChecK your Data"
         return render(request,"dispatchlogin.html",{"msg":msg})
@@ -592,6 +587,7 @@ def dispatchuser1 (request) :
 def postdispatchuser (request) :
     date1 = request.POST.get("date1")
     date2 = request.POST.get("date2")
+    userid1 = request.POST.get("hiddenuserid")
     firebase1=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
     dates = list(firebase1.get("Data/BookingOrder/Orders" , None).values())
     orderdates=[]
@@ -621,18 +617,19 @@ def postdispatchuser (request) :
                                      }]
                         temp.append(bill_id)
                         billid.append(bill_id)
-    return render (request , "dispatchuser.html", {'list1' : list1 , "temp" : temp})
+    return render (request , "dispatchuser.html", {'list1' : list1 , "temp" : temp , "hiddenuserid1":userid1})
 
 def confirmdispatch(request):    
     
     bill_id=request.POST.get("bill_id" , None)
-    
-    return render (request , "confirmdispatch.html",{"bill_id":bill_id})
+    userid2=request.POST.get("hiddenuserid2")
+    return render (request , "confirmdispatch.html",{"bill_id":bill_id , "userid2":userid2})
 
 
 
 def postconfirmdispatch (request) :
     bill_id = request.POST.get("bill_id")
+    userid = request.POST.get("hiddenuserid3")
     dbdispatch = database.child("Data").child("BookingOrder").child("Orders").get()
     
     for pcdispatch in dbdispatch.each() :
@@ -644,14 +641,16 @@ def postconfirmdispatch (request) :
             partyname = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("partyname").get().val()
             invcno = database.child("Data").child("BookingOrder").child("Orders").child(pcdispatch.key()).child("invcno").get().val()
             data = {
+                "Bill Id":bill_id,
                 "fromcity" : fromcity ,
                 "company_name" : companyname12 ,
                 "date" : datee ,
                 "destination" : destination ,
                 "partyname" : partyname ,
-                "invcno" : invcno
+                "invcno" : invcno,
+                "User Confirmed Order": userid
                 }
-            database.child("Data").child("ConfirmedOrders").child("OrderDetails").push(data)
+            database.child("Data").child("ConfirmedOrders").child("OrderDetails").child(userid).push(data)
 
     for deletedispatch in dbdispatch.each():
         if deletedispatch.val()['bill_id'] == bill_id :
@@ -665,7 +664,10 @@ def postconfirmdispatch (request) :
                 if eachcityval not in fromcitylist:
                     fromcitylist.append(eachcityval)
     msg = "Your Dispatch Confirmed !! Message has been sent to Admin !!"
-    return render (request ,"lh3.html", {"msg" : msg ,"fromcitylist" : fromcitylist})
+    return render (request ,"lh3.html", {"msg" : msg ,"fromcitylist" : fromcitylist , "user_id":userid})
+
+# def viewdispatchorders (request) : 
+
 
      
 

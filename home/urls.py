@@ -60,6 +60,8 @@ urlpatterns = [
      path("confirmdispatch/" , views.confirmdispatch ,name='confirmdispatch' ),
      path("postconfirmdispatch/" , views.postconfirmdispatch ,name='postconfirmdispatch' ),
      path("dispatchpanel/" , views.dispatchpanel ,name='dispatchpanel' ),
-     path("dispatchconfirm/" , views.dispatchconfirm ,name='dispatchconfirm' )
+     path("dispatchconfirm/" , views.dispatchconfirm ,name='dispatchconfirm' ),
+     # path("viewdispatchorders/" , views.viewdispatchorders ,name='viewdispatchorders' )
+
      
 ]

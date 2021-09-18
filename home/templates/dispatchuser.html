@@ -319,6 +319,8 @@
             <button type=submit class="anybutton">Submit</button> {% endcomment %}
             <table border='1' width="50%" id="table" class="center">
                 <caption><strong>DISPATCH ORDERS</strong></caption>
+                <caption><strong>User Confirming the Orders : {{hiddenuserid1}}</strong></caption>
+                <input type="hidden" name="hiddenuserid2" value="{{hiddenuserid1}}">
                 <thead>
                     <tr>
                         <th>Bill ID</th>
@@ -344,7 +346,7 @@
 
 
                     </tr>
-                    {% endfor %} 
+                    {% endfor %}
 
 
 
@@ -356,6 +358,8 @@
 
             </div>
             <button type=submit class="anybutton">Submit</button>
+
+
             <script>
                 var table = document.getElementById('table');
 
