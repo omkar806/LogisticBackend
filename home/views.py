@@ -666,7 +666,15 @@ def postconfirmdispatch (request) :
     msg = "Your Dispatch Confirmed !! Message has been sent to Admin !!"
     return render (request ,"lh3.html", {"msg" : msg ,"fromcitylist" : fromcitylist , "user_id":userid})
 
-# def viewdispatchorders (request) : 
+def viewdispatchorders (request) : 
+    user_id12 = request.POST.get("hiddenuserid12")
+    confirmedorders12 = []
+    dispatchinfo = database.child("Data").child("ConfirmedOrders").child("OrderDetails").child(user_id12).get()
+    for i in dispatchinfo.each() :
+        i.val().pop('User Confirmed Order')
+        confirmedorders12.append(i.val())
+
+    return render (request ,"viewdispatchuser.html" , {"user_id" : user_id12 ,"COlist": confirmedorders12})
 
 
      
