@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from  home import views
+from home import views
 urlpatterns = [
      path("",views.index,name= 'home'),
      path("about",views.about,name= 'about'), 
@@ -61,7 +61,7 @@ urlpatterns = [
      path("postconfirmdispatch/" , views.postconfirmdispatch ,name='postconfirmdispatch' ),
      path("dispatchpanel/" , views.dispatchpanel ,name='dispatchpanel' ),
      path("dispatchconfirm/" , views.dispatchconfirm ,name='dispatchconfirm' ),
-     path("viewdispatchorders/" , views.viewdispatchorders ,name='viewdispatchorders' )
-
+     path("viewdispatchorders/" , views.viewdispatchorders ,name='viewdispatchorders' ),
+     path("postviewdispatchuser/" ,views.postviewdispatchuser , name="postviewdispatchuser" )
      
 ]

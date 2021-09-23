@@ -548,6 +548,21 @@ def postconfirmbookingorder (request) :
     }
 
     database.child("Data").child("BookingOrder").child("Orders").push(data)
+    from twilio.rest import Client
+
+    # Your Account SID from twilio.com/console
+    account_sid = "ACa146b54a52c221a9a0b309438c3171c5"
+    # Your Auth Token from twilio.com/console
+    auth_token  = "733c0390e9aae2fdf0a74fec33bb2f87"
+
+    client = Client(account_sid, auth_token)
+
+    message = client.messages.create(
+        to="+917558610861", 
+        from_="+16308844509",
+        body="Hi Neemesh !! Are Omkar here !! Message sending cha code successful zala !! Confirm Kar Whatsapp var !!")
+
+    print(message.sid)
     msg = "Your Order Has Been Placed Successfully !!"
     return render (request , "bookingorder.html" , {"msg" : msg,"fromcity" : fromcity ,
                                                                     "company_name" : company_name,
@@ -677,5 +692,6 @@ def viewdispatchorders (request) :
     return render (request ,"viewdispatchuser.html" , {"user_id" : user_id12 ,"COlist": confirmedorders12})
 
 
-     
+def postviewdispatchuser (request) :
+    return render (request , "postviewdispatchuser.html")     
 

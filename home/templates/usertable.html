@@ -1,316 +1,278 @@
-<!DOCTYPE html>
-{%load static%}
-<html>
-   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/usertable.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
-      <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            
-          }
-          
-          
-          header{
-          
-            display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 30px ,10%;
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-          background-color: #a4ebf3;
-          }
-          
-          .navbar{
-            background-color: #a4ebf3;
-          border-radius: 30px;
-          font-family: 'Lexend Deca', sans-serif;
-          }
-          
-          .navbar li{
-            float:left;
-            list-style: none; 
-            margin: 13px 20px;
-          }
-          .navbar ul{
-            overflow: auto;
-          }
-          
-          .navbar li a{
-            padding: 3px 3px;
-          text-decoration: non}
-.logo{
-    cursor: pointer;
-    margin-left: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    }
-    .login li{
-        
-        float:left;
-        list-style: none; 
-        margin: 13px 20px;
-        font-family: 'Lexend Deca', sans-serif;
-    }
-    .login ul{
-        overflow: auto;
+<!-- {% load static %} -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Prelogin</title>
+</head>
+<!-- <script src="{% static "table2excel.js" %}"></script> -->
+<style>
+    .navbar {
+        background-color: transparent !important;
     }
     
-    .login li a{
-        padding: 3px 3px;
-        text-decoration: none;
-        color: black;
-        
-        transition: all 0.3s ease 0s;
-    } 
-    .login li a:hover{
-                color: #0096FF;
-                font-family: 'Lexend Deca', sans-serif;
-            }
+    .navbar .navbar-nav {
+        margin: 0 auto;
+    }
     
-.line{
-    color:#0096FF ;
-}
-.fix{       
-        /* display: block; */
-      
-        
-        overflow: hidden;
-}
-.text1{
-
-    position: absolute;
-    color: #AACCFF;
-    top: 150px;
-    left: 100px;
-    padding-right: 500px;
+    .navbar .nav-link {
+        font-size: 22px;
+        padding-right: 20px;
+    }
     
+    .navbar .navbar-brand {
+        /* font-size: 20px !important; */
+        font-size: larger;
+    }
     
-    text-decoration: none;
-    border: palegoldenrod 2px solid;
-    border-radius: 20px;
-}
-.text1 li{
-
-    text-decoration: none;
-
-    padding: 50px;
-}
-.text1 ul{
-
-text-decoration: none;
-
-}
-
-.img2 {
-
-    position: absolute;
-    top: 160px;
-    left: 665px;
-   
+    .navbar .nav-item {
+        padding-right: 30px;
+    }
     
-}
-a{
-    text-decoration:none;
+    .head {
+        padding-top: 8vw;
+        font-size: 5vw;
+    }
+    
+    .form-container {
+        background: #fff;
+        /* position: absolute; */
+        top: 35vh;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 6px 0px #000;
+    }
+</style>
 
-    color: black;
-}
-button {
+<body>
+    <div style="background-image: linear-gradient(45deg ,lightblue ,white) ; height: 185vh; padding-bottom: 20px;" class="start">
 
-        position: absolute;
-        top: 520px;
-        border-radius: 20px;
-        left: 200px;
-        border: none;
-        
-        padding: 16px 32px;
-        text-align: center;
-        text-decoration: none;
-        
-        font-size: 16px;
-        margin: 4px 2px;
-        transition-duration: 0.4s;
-        cursor: pointer;
-      
-}
-  
-.button1 {
-    background-color: #002D62; 
-    color: #AACCFF; 
-    border: 2px solid palegoldenrod;
-  }
+        <div class="mynav">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 px-5">
+                <div class="container-fluid">
+                    <a class="navbar-brand" style="font-size: 22px;" href="#">HariOm-Logistics</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Services
+                    </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
 
-  .button1:hover {
-    background-color:#0952a5;
-    color: white;
-  }
-  
-        body {
-          background-color:#ffff;
-        }
-        
-         table, th, td {
-             text-align: left;
-           margin-top: 50px;
-           margin-left: 25%;
-          border: 3px solid rgba(88, 86, 86, 0.856);
-          height: 20px;
-         }
-          table{
-          width: 55%;
-          border-collapse: collapse;
-          text-align: center;
-         }
-        .inn{
-            text-align: center;
-        }
-         caption{
-           font-size: large;
-         }
-      </style>
-   </head>
+                        </ul>
+                        <form class="d-flex">
+                            <!-- <a class="nav-link nav-item" href="">Login</a> -->
+                            <button type="submit" class="btn btn-danger btn-block  ">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
 
-   <body>
-    <header>
-            <img class= "logo" src={% static "logo23.jpg" %} alt="logo" height="50px" width="50px" > 
-        <nav class="navbar">
-            
-            <ul>
-                
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/contact">Contact us</a></li>
-                
-               
-            </ul>
-        </nav>
-        <div class="login">
-  
-  
-            <ul>
-  
-                
-                <li><a href="/prelogin.html"><strong>LOGIN</strong></a></li>
-                
-            </ul>
-            
-        </div>
-    </header>
-    <hr>
-      <table border='1'>
-        <caption><strong>Admin Users</strong></caption>
-        <thead>
-         <tr>
-           <th>Address</th>
-           <th>City</th>
-           <th>Email</th>
-           <th>Name</th>
-           <th>Phone Number</th>
-           <th>Pincode</th>
-           <th>State</th>
-           <th>User Id</th>
-         </tr>
-        </thead>
-        <tbody>
-            {%for user in admindata%}
-            <tr>
-                {% for row in user.values %}
-                    <td>{{row}}</td>
-                {% endfor %} 
-                
-        </tbody>
-            </tr>      
-            {% endfor %} 
-            
-        </tbody>  
-        </tbody>
-      <table border='1'>
-        <caption><strong>Booking Users</strong></caption>
-        <thead>
-         <tr>
-          <th>Address</th>
-          <th>City</th>
-          <th>Email</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Pincode</th>
-          <th>State</th>
-          <th>User Id</th>
-         </tr>
-        </thead>
-        <tbody>
-            {%for user in bookingdata%}
-            <tr>          
-                {% for row in user.values %}
-                    <td> {{row}} </td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-      <table border='1'>
-        <caption><strong>Users</strong></caption>
-        <thead>
-         <tr>
-          <th>Address</th>
-          <th>City</th>
-          <th>Email</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Pincode</th>
-          <th>State</th>
-          <th>User Id</th>
-         </tr>
-        </thead>
-        <tbody>
-            {%for user in dispatchdata%}
-            <tr>
-                {% for row in user.values %}
-                    <td>{{row}}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-      <table border='1'>
-          <caption><strong>MIS Users</strong></caption>
-        <thead>
-         <tr>
-          <th>Address</th>
-          <th>City</th>
-          <th>Email</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Pincode</th>
-          <th>State</th>
-          <th>User Id</th>
-         </tr>
-        </thead>
-        <tbody>
-            {%for user in misdata%}
-            <tr>
-                {% for row in user.values %}
-                    <td>{{row}}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-      </table>
-        <div class="inn">
+            <div class="text-center pt-4 pb-2">
+                <h2><u>Admin Users</u></h2>
+            </div>
+            <div class="my-1">
 
-            <p style="color: black;padding: 10px 0;">Want to Update User Details ?<a href="/checkuserupdate" style="color: blue;">Click Here to Update</a></p>
-            <p style="color: black;padding: 10px 0;">Want to Delete User ?<a href="/deleteuser" style="color: blue;">Click Here to Delete</a></p>
-            
-           </div>
-        </body>
+                <table class="table table-hover container table-dark table-responsive py-0 px-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Address</th>
+                            <th scope="col">City </th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">State/th>
+                                <th scope="col">User ID</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for user in admindata%}
+                        <tr>
+                            {% for row in user.values %}
+                            <td>{{row}}</td>
+                            {% endfor %}
+
+                    </tbody>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    </tbody>
+                </table>
+
+                <div class="container">
+                    <hr>
+                </div>
+
+            </div>
+            <div class="text-center pt-3 pb-2">
+                <h2><u>Booking Users</u></h2>
+            </div>
+            <div class="my-1">
+
+                <table class="table table-hover container table-dark table-responsive py-0 px-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Address</th>
+                            <th scope="col">City </th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">State/th>
+                                <th scope="col">User ID</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for user in bookingdata%}
+                        <tr>
+                            {% for row in user.values %}
+                            <td> {{row}} </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="container">
+                    <hr>
+                </div>
+
+            </div>
+            <div class="text-center pt-5 pb-2">
+                <h2><u>Dispatch Users</u></h2>
+            </div>
+            <div class="my-1">
+
+                <table class="table table-hover container table-dark table-responsive py-0 px-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Address</th>
+                            <th scope="col">City </th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">State/th>
+                                <th scope="col">User ID</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for user in dispatchdata%}
+                        <tr>
+                            {% for row in user.values %}
+                            <td>{{row}}</td>
+                            {% endfor %}
+                        </tr>
+
+                    </tbody>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                    </tbody>
+                </table>
+
+                <div class="container">
+                    <hr>
+                </div>
+
+            </div>
+            <div class="text-center pt-5 pb-2">
+                <h2><u>MIS Users</u></h2>
+            </div>
+            <div class="my-1">
+
+                <table class="table table-hover container table-dark table-responsive py-0 px-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Address</th>
+                            <th scope="col">City </th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">State/th>
+                                <th scope="col">User ID</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for user in misdata%}
+                        <tr>
+                            {% for row in user.values %}
+                            <td>{{row}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </tbody>
+                </table>
+
+
+                <div class="container">
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+
+                <button type="button" class="btn btn-primary my-5 btn-lg mb-5"><a style="text-decoration: none; color: white;" href="">Click here to Update User Details</a></button>
+
+
+
+
+
+                <button type="button" class="btn btn-danger mx-5 my-5 btn-lg mb-5"><a style="text-decoration: none; color: white;" href="">Click here to Delete User</a></button>
+
+
+            </div>
+            <!-- Option 1: Bootstrap Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+            <!-- Option 2: Separate Popper and Bootstrap JS -->
+            <!--
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+          -->
+</body>
+
 </html>
