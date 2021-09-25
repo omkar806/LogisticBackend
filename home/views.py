@@ -558,7 +558,7 @@ def postconfirmbookingorder (request) :
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
-        to="+917558610861", 
+        to="+91", 
         from_="+16308844509",
         body="Hi Neemesh !! Are Omkar here !! Message sending cha code successful zala !! Confirm Kar Whatsapp var !!")
 
