@@ -553,14 +553,14 @@ def postconfirmbookingorder (request) :
     # Your Account SID from twilio.com/console
     account_sid = "ACa146b54a52c221a9a0b309438c3171c5"
     # Your Auth Token from twilio.com/console
-    auth_token  = "733c0390e9aae2fdf0a74fec33bb2f87"
+    auth_token  = "8b1983e6e50af6320f2a533518de4709"
 
     client = Client(account_sid, auth_token)
-
+     
     message = client.messages.create(
-        to="+91", 
+        to="+917588069659", 
         from_="+16308844509",
-        body="Hi Neemesh !! Are Omkar here !! Message sending cha code successful zala !! Confirm Kar Whatsapp var !!")
+        body="Your Order has been Confirmed Your Bill Id is :"+bill_id+"\n"+"You Booked your order on :"+datee)
 
     print(message.sid)
     msg = "Your Order Has Been Placed Successfully !!"
