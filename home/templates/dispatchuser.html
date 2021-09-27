@@ -7,6 +7,7 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         body {
             text-align: center;
@@ -315,12 +316,14 @@
     <form action="/confirmdispatch/" method="POST">
         {% csrf_token %}
         <div class="co">
-            {% comment %} Bill_ID Selected :<input type="text" name="bill_id" id="billid"><br><br>
-            <button type=submit class="anybutton">Submit</button> {% endcomment %}
-            <table border='1' width="50%" id="table" class="center">
-                <caption><strong>DISPATCH ORDERS</strong></caption>
+        <caption><strong>DISPATCH ORDERS</strong></caption> <br>
                 <caption><strong>User Confirming the Orders : {{hiddenuserid1}}</strong></caption>
                 <input type="hidden" name="hiddenuserid2" value="{{hiddenuserid1}}">
+            {% comment %} Bill_ID Selected :<input type="text" name="bill_id" id="billid"><br><br>
+            <button type=submit class="anybutton">Submit</button> {% endcomment %}
+            <div class="container">
+            <table border='1' width="50%" id="table" class="table table-dark text-white table-hover table-responsive ">
+                
                 <thead>
                     <tr>
                         <th>Bill ID</th>
@@ -328,7 +331,7 @@
                         <th>Company Name</th>
                         <th>Date</th>
                         <th>Destinaton</th>
-                        <th>Pary Name</th>
+                        <th>Party Name</th>
                         <th>Invoice Number</th>
 
 
@@ -352,8 +355,10 @@
 
 
                 </tbody>
-            </table><br><br>
-            <div class="question">
+            </table>
+            </div>
+            <br><br>
+            <div class="container">
                 <label> Bill_ID Selected :</label><input type="text" name="bill_id" id="billid" required readonly/><br><br>
 
             </div>

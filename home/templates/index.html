@@ -14,7 +14,7 @@
   <style>
     /* .mynav{
   background-image: linear-gradient(45deg , lightblue , white);
-  height: 40vw;
+  height: 200vw;
 
 } */
 .navbar{
@@ -125,13 +125,13 @@ margin-top: 200px;
               </div>
             </div>
           </nav>
-          <h1 class="text-center head my-4 ">A new era of Transportation</h1>
+          <h1 class="text-center head my-4 "> <i>A new era of Transportation </i></h1>
           <!-- <button class="button text-center"><span>Hover </span></button> -->
           <div class="col-md-12 text-center">
-            <button type="button"  class="btn btn-primary my-3  btn-lg mx-5"><a style="text-decoration: none; color: white;" href="/bookinglogin">Booking User Login</a></button>
-            <button type="button"  class="btn btn-primary my-3  btn-lg mx-5"><a style="text-decoration: none; color: white;" href="/dispatchlogin">Dispatch Login</a></button>
-            <button  type="button"  class="btn btn-primary my-3  btn-lg mx-5"><a style="text-decoration:  none; color: white; " href="/mislogin">MIS Login</a></button>
-            <button type="button"  class="btn btn-primary my-3  btn-lg mx-5"><a style="text-decoration: none; color: white;" href="adminlogin">Admin Login</a></button>
+            <button type="button"  class="btn btn-primary my-3  btn-lg mx-5" onclick='location.href={% url 'bookinglogin' %}'>Booking User Login</button>
+            <button type="button"  class="btn btn-primary my-3  btn-lg mx-5" onclick='location.href={% url 'dispatchlogin' %}'>Dispatch Login</button>
+            <button  type="button"  class="btn btn-primary my-3  btn-lg mx-5" onclick='location.href={% url 'mislogin' %}'>MIS Login</button>
+            <button type="button"  class="btn btn-primary my-3  btn-lg mx-5" onclick='location.href={% url 'adminlogin' %}'>Admin Login</button>
           
           </div>
         </div>
@@ -142,10 +142,10 @@ margin-top: 200px;
               <img src={% static "truckop.png" %} class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
             <div class="col-lg-6 my-3">
-              <h1 class="display-5 fw-bold lh-1 mb-3 my-5">Best in Business</h1>
-              <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus magnam voluptatibus ratione! Qui deleniti voluptas odio eos quaerat iure eveniet ratione necessitatibus magnam, dolore, repellendus pariatur ipsa sapiente dolores natus ipsum quod sint, quae maiores distinctio officia temporibus quidem. Quas dolor vero modi tenetur excepturi, soluta atque eius distinctio nesciunt!</p>
+              <h1 class="display-5 fw-bold lh-1 mb-3 my-5"><i>Best in Business</i></h1>
+              <p class="lead"><i>Logistics management aims at increasing the overall efficiency of organization. It fastens all inbound and outbound logistics activities to accomplish the project within the stipulated time. Best quality materials are acquired at lowest possible cost and utilize efficiently with minimum wastage. Logistic managers monitor all operations and avoids any overheads which enhance the overall efficiency.</i></p>
               <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Enroll</button>
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" onclick='location.href="{% url 'adminlogin' %}"'>Go to Admin Login</button>
                 <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> -->
               </div>
             </div>
@@ -153,8 +153,8 @@ margin-top: 200px;
         </div>
        <div class="bg-light p-5 rounded mt-3">
     <h1>Quality Service</h1>
-    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, blanditiis.</p>
-    <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">Register »</a>
+    <p class="lead"><i>Process of logistic management has an efficient role in on-time delivery of products. It monitors all inbound and outbound movement of goods by selecting a team of professional members. Products are safely and rapidly shipped to deliver them at a right time, at right place and in right manner.</i></p>
+    
   </div>
 
 <style>

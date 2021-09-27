@@ -59,6 +59,9 @@ def registerdispatch (request) :
     return render(request , "registerdispatch.html")    
 def registermis (request) :
     return render(request , "registermis.html")
+def lh3render(request):
+    user_id=request.POST.get('hiddenuserid3')
+    return render (request , "lh3.html" , {'user_id':user_id})
 
 def postregisteradmin (request) :
     email = request.POST.get('email')
