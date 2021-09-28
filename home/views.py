@@ -204,7 +204,14 @@ def postloginbooking(request) :
                 user=authe.sign_in_with_email_and_password(email,passwd)
                 session_id=user['idToken']
                 request.session['uid']=str(session_id)
-                return render(request , 'bookingorder1.html')
+                firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
+                companies=list(firebase.get("/Data/Company",None).values())
+                compnames=[]
+                for compdetails in companies:
+                    for eachcompkey,eachcompval in compdetails.items():
+                        if eachcompkey=='Company Name':
+                            compnames.append(eachcompval)
+                return render(request , 'bookingorder1.html' , {"compnames":compnames})
             except :
                 tempmail=email
                 msg="Invalid Password!!"
