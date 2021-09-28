@@ -204,7 +204,7 @@ def postloginbooking(request) :
                 user=authe.sign_in_with_email_and_password(email,passwd)
                 session_id=user['idToken']
                 request.session['uid']=str(session_id)
-                return render(request , 'lh1.html')
+                return render(request , 'bookingorder1.html')
             except :
                 tempmail=email
                 msg="Invalid Password!!"
