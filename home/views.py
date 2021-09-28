@@ -191,31 +191,33 @@ def postloginadmin (request) :
 def postloginbooking(request) :
     email = request.POST.get('username')
     passwd =  request.POST.get('password')
+    user_id= request.POST.get('bookinguserid')
     firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
     result=firebase.get('/Data/Signup/Booking', None)
     flag=0
     tempmail='0'
     msg='0'
     for userid,user in result.items():
-        if email==user['Email'] :    
-            flag=1
-            # if there is no error then signin the user with given email and password
-            try:
-                user=authe.sign_in_with_email_and_password(email,passwd)
-                session_id=user['idToken']
-                request.session['uid']=str(session_id)
-                firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
-                companies=list(firebase.get("/Data/Company",None).values())
-                compnames=[]
-                for compdetails in companies:
-                    for eachcompkey,eachcompval in compdetails.items():
-                        if eachcompkey=='Company Name':
-                            compnames.append(eachcompval)
-                return render(request , 'bookingorder1.html' , {"compnames":compnames})
-            except :
-                tempmail=email
-                msg="Invalid Password!!"
-                return render(request,"bookinglogin.html",{"msg":msg,"tempmail":tempmail})   
+        if user_id==user['User Id'] :
+            if email==user['Email'] :    
+                flag=1
+                # if there is no error then signin the user with given email and password
+                try:
+                    user=authe.sign_in_with_email_and_password(email,passwd)
+                    session_id=user['idToken']
+                    request.session['uid']=str(session_id)
+                    firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
+                    companies=list(firebase.get("/Data/Company",None).values())
+                    compnames=[]
+                    for compdetails in companies:
+                        for eachcompkey,eachcompval in compdetails.items():
+                            if eachcompkey=='Company Name':
+                                compnames.append(eachcompval)
+                    return render(request , 'bookingorder1.html' , {"compnames":compnames , "user_id":user_id})
+                except :
+                    tempmail=email
+                    msg="Invalid Password!!"
+                    return render(request,"bookinglogin.html",{"msg":msg,"tempmail":tempmail})   
     if flag==0:       
         msg="Invalid Credentials!!Please ChecK your Data"
         return render(request,"bookinglogin.html",{"msg":msg})
@@ -435,6 +437,7 @@ def bookingorder1 (request) :
     return render(request, 'bookingorder1.html' , {"compnames" : compnames , "present_date": present_date})
 
 def postbookingorder1 (request) :
+    user_id=request.POST.get('hiddenbookinguserid')
     firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
     companies=list(firebase.get("/Data/Company",None).values())
     compnames=[]
@@ -446,7 +449,7 @@ def postbookingorder1 (request) :
     company_name = request.POST.get("compname1")
     datee = request.POST.get("date")
     docket_no = request.POST.get("docno")
-    return render(request , "bookingorder.html"  , {"fromcity":fromcity , "company_name" : company_name , "datee" : datee , "docket_no" : docket_no})
+    return render(request , "bookingorder.html"  , {"fromcity":fromcity , "company_name" : company_name , "datee" : datee , "docket_no" : docket_no ,"user_id":user_id})
 
 
 
@@ -472,6 +475,7 @@ def postbookingorder(request):
     invoice_no = request.POST.get("invcno")
     noofpckg= request.POST.get("noofpckg")
     description = request.POST.get("description")
+    user_id=request.POST.get("hiddenbookinguserid")
     # totalcost = int(cost)*int(noofpckg)
     # print(totalcost)
     bill_id = uuid.uuid4()
@@ -487,7 +491,8 @@ def postbookingorder(request):
                                                                     "noofpckg" : noofpckg,
                                                                      
                                                                     "description" : description ,
-                                                                    "bill_id" : bill_id    })
+                                                                    "bill_id" : bill_id,
+                                                                    "user_id" : user_id    })
    
 
 def registernewproduct(request):

@@ -360,9 +360,9 @@
             </div>
             <div>
                 <label for="lname" style="font-size: 130%; margin-left: 2%;">Company Name:</label>
-                
+
                 <input type="text" list="brow1" name="compname1" style="font-size: 18px; height: 35px; width:240px; ">
-                
+
                 <datalist id="brow1" name="compname1">
                 {% for compname in compnames %}
                 <option value= "{{compname}}">{{compname}}</option>
@@ -494,6 +494,8 @@
                 </div>
             </nav>
             <h1 class="text-center py-4">Enter From-Details</h1>
+            <p class="text-center py-4"> <i> Welcome User : {{user_id}} </i> </p>
+            <input type="hidden" name="hiddenbookinguserid" value={{user_id}}>
 
             <section class="container-fluid">
 
@@ -502,11 +504,13 @@
                     <section class="col-12 col-lg-8 col-md-3">
                         <form class="form-container py-5 px-5" action="/postbookingorder1/" method="POST">
                             {% csrf_token %}
+
+                            <input type="hidden" name="hiddenbookinguserid" value={{user_id}}>
                             <div class="form-group py-3">
                                 <label for="exampleInputPassword1" style="font-size: 20px;">City (from) :</label>
 
                                 <input type="text" name="fromcity" list="brow" id="exampleInputPassword1" class="form-control">
-                                <datalist  name="fromcity" id="brow">
+                                <datalist name="fromcity" id="brow">
                                 <option value="Pune">
                                 <option value="Ahmdnagar">
                                 <option value="Akola">
@@ -515,17 +519,17 @@
                                 </datalist>
                             </div>
                             <div class="form-group py-3">
-                                
+
                                 <label for="exampleInputPassword1" style="font-size: 20px;">Company Name :</label>
-                                <input type="text" name="compname1" list="brow1"  class="form-control">
-                
-                                    <datalist id="brow1" name="compname1">
+                                <input type="text" name="compname1" list="brow1" class="form-control">
+
+                                <datalist id="brow1" name="compname1">
                                     {% for compname in compnames %}
                                     <option value= "{{compname}}">{{compname}}</option>
                                         {% endfor %}
                                         </datalist>
-                                                 
-                            
+
+
                             </div>
 
                             <div class="form-group py-3">
@@ -535,7 +539,7 @@
 
                             <div class="form-group py-3">
                                 <label for="exampleInputPassword1" style="font-size: 20px;">Docket Number :</label>
-                                <input type="number" name="docno" class="form-control" id="exampleInputPassword1" placeholder="Docket Number" >
+                                <input type="number" name="docno" class="form-control" id="exampleInputPassword1" placeholder="Docket Number">
                             </div>
 
 
