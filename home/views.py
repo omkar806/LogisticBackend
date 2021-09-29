@@ -189,9 +189,9 @@ def postloginadmin (request) :
         msg="Invalid Credentials!!Please ChecK your Data"
         return render(request,"adminlogin.html",{"msg":msg}) 
 def postloginbooking(request) :
-    email = request.POST.get('username')
-    passwd =  request.POST.get('password')
-    user_id= request.POST.get('bookinguserid')
+    email=request.POST.get('username')
+    passwd =request.POST.get('password1')
+    user_id=request.POST.get('bookinguserid')
     firebase=FirebaseApplication("https://neemeesh-trial-default-rtdb.firebaseio.com/", None)
     result=firebase.get('/Data/Signup/Booking', None)
     flag=0
@@ -199,10 +199,13 @@ def postloginbooking(request) :
     msg='0'
     for userid,user in result.items():
         if user_id==user['User Id'] :
-            if email==user['Email'] :    
+            
+            if email==user['Email'] :
+
                 flag=1
                 # if there is no error then signin the user with given email and password
                 try:
+
                     user=authe.sign_in_with_email_and_password(email,passwd)
                     session_id=user['idToken']
                     request.session['uid']=str(session_id)
@@ -534,7 +537,7 @@ def postconfirmbookingorder (request) :
              cost=database.child("Data").child("Product").child(i.key()).child("Cost").get().val()
 
 
-
+    user_id = request.POST.get('hiddenbookinguserid')
     bill_id = request.POST.get("bill_id")
     # totalcost= request.POST.get("totalcost")
     fromcity = request.POST.get("fromcity")
@@ -582,7 +585,7 @@ def postconfirmbookingorder (request) :
     return render (request , "bookingorder.html" , {"msg" : msg,"fromcity" : fromcity ,
                                                                     "company_name" : company_name,
                                                                     "datee" : datee , 
-                                                                    "docket_no" : docket_no ,})
+                                                                    "docket_no" : docket_no ,"user_id":user_id})
 
 def postmis (request) :
     return render (request , "lh2.html")

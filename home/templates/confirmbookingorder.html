@@ -363,8 +363,14 @@
 
 <!doctype html>
 <html lang="en">
+{% load static %}
 
 <head>
+    {% if msg1 %}
+    <script>
+        window.alert('{{msg1}}');
+    </script>
+    {% endif %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -448,9 +454,9 @@
                             </li>
 
                         </ul>
-                        <form class="d-flex">
+                        <form class="d-flex" action="/bookinglogin/" method="POST">
                             <!-- <a  class="nav-link nav-item" href="">Login</a> -->
-                            <button type="submit" class="btn btn-primary btn-block mx-3 ">Login</button>
+
                             <button type="submit" class="btn btn-danger btn-block  ">Logout</button>
 
                         </form>
@@ -458,7 +464,7 @@
                 </div>
             </nav>
             <h1 class="text-center py-4">Confirm Order</h1>
-
+            <p><i> User : {{user_id}}</i> </p>
             <section class="container-fluid">
 
                 <section class="row  justify-content-center">
@@ -466,6 +472,7 @@
                     <section class="col-12 col-lg-8 col-md-3">
                         <form class="form-container py-5 px-5" action="/postconfirmbookingorder/" method="POST">
                             {% csrf_token %}
+                            <input type="hidden" name="hiddenbookinguserid" value={{user_id}}>
                             <div class="form-group">
                                 <label for="exampleInputEmail1" style="font-size: 20px;">BILL ID</label>
                                 <input type="text" name="bill_id" value={{bill_id}} readonly class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
