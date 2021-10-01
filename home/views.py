@@ -203,8 +203,9 @@ def postloginbooking(request) :
             if email==user['Email'] :
 
                 flag=1
-                # if there is no error then signin the user with given email and password
+                    # if there is no error then signin the user with given email and password
                 try:
+
 
                     user=authe.sign_in_with_email_and_password(email,passwd)
                     session_id=user['idToken']
@@ -701,6 +702,7 @@ def postconfirmdispatch (request) :
 
 def viewdispatchorders (request) : 
     user_id12 = request.POST.get("hiddenuserid12")
+    
     confirmedorders12 = []
     dispatchinfo = database.child("Data").child("ConfirmedOrders").child("OrderDetails").child(user_id12).get()
     for i in dispatchinfo.each() :
@@ -711,5 +713,57 @@ def viewdispatchorders (request) :
 
 
 def postviewdispatchuser (request) :
-    return render (request , "postviewdispatchuser.html")     
+    bill_id=request.POST.get('bill_id')
+    user_id12 = request.POST.get("hiddenuserid5")
+    postdispatchinfo = database.child("Data").child("ConfirmedOrders").child("OrderDetails").child(user_id12).get()
+    for i in postdispatchinfo.each():
 
+        if i.val()['Bill Id']==bill_id :
+            i.val().pop('User Confirmed Order') 
+            dispatchdate=i.val()['date']
+            dispatchfromcity=i.val()['fromcity']
+            dispatchbillid =i.val()['Bill Id']
+    context = {
+    "dispatchdate":dispatchdate ,
+    "dispatchfromcity":dispatchfromcity,
+    "user_id":user_id12,
+    "dispatchbillid":dispatchbillid
+    }
+    return render (request , "postviewdispatchuser.html",context)     
+
+def ordersconfirmedbydispatch(request):
+    user_id=request.POST.get('hiddenbookinguserid')
+    bill_id_dispatch = request.POST.get('bill_id_dispatch')
+    fromcity_dispatch = request.POST.get('fromcity_dispatch')
+    date_dispatch  = request.POST.get('date_dispatch')
+    # receiver data 
+    fromcity_booking = request.POST.get('fromcity_booking')
+    date_booking  = request.POST.get('date_booking')
+     
+    #pushing data 
+
+    data= {
+        "bill_id_dispatch":bill_id_dispatch,
+        "fromcity_dispatch":fromcity_dispatch,
+        "date_dispatch":date_dispatch,
+        "fromcity_booking":fromcity_booking,
+        "date_booking":date_booking
+    }
+    database.child("Data").child("dispatchedorders").child(user_id).push(data)
+    from twilio.rest import Client
+
+    # Your Account SID from twilio.com/console
+    account_sid = "ACa146b54a52c221a9a0b309438c3171c5"
+    # Your Auth Token from twilio.com/console
+    auth_token  = "2c31b3403a26c425baf60e1d727f92ef"
+
+    client = Client(account_sid, auth_token)
+     
+    message = client.messages.create(
+        to="+917588069659", 
+        from_="+16308844509",
+        body="Your Order has been Dispatched ,\n having Bill ID(Note this Bill id for Future Use):"+bill_id_dispatch+"\n"+"Dispatched From:"+fromcity_dispatch+"\n"+"Dispatching Date:"+date_dispatch+"\n"+"Your Order is Arriving on:"+date_booking+"\n Your Order is arriving at the location:"+fromcity_booking+"\nas Booked by you")
+
+    print(message.sid)
+    msg = " Order Dispatched Successfully !!"
+    return render (request , "lh3.html" ,{"user_id":user_id})

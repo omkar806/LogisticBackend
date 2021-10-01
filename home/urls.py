@@ -63,7 +63,8 @@ urlpatterns = [
      path("dispatchconfirm/" , views.dispatchconfirm ,name='dispatchconfirm' ),
      path("viewdispatchorders/" , views.viewdispatchorders ,name='viewdispatchorders' ),
      path("postviewdispatchuser/" ,views.postviewdispatchuser , name="postviewdispatchuser" ),
-     path("lh3render/" ,views.lh3render , name="lh3render" )
+     path("lh3render/" ,views.lh3render , name="lh3render" ),
+     path("ordersconfirmedbydispatch/" ,views.ordersconfirmedbydispatch , name="ordersconfirmedbydispatch" )
 
      
 ]

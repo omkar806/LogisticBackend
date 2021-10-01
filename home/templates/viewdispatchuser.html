@@ -16,7 +16,7 @@
     <div class="container">
         <h1>View Your Dispatched Orders</h1>
         <h2>Welcome User {{user_id}}</h2>
-        <input type="hidden" name="hiddenuserid5" value={{user_id}}>
+        <!-- <input type="hidden" name="hiddenuserid5" value={{user_id}}>  -->
     </div>
     <div class="container">
         <table border="1" class="table table-dark text-white" id="table">
@@ -44,10 +44,11 @@
             </tbody>
 
         </table>
-
-        <label> Bill_ID Selected :</label><input type="text" name="bill_id" id="billid" required readonly/><br><br>
         <form action="/postviewdispatchuser/" method="POST">
             {% csrf_token %}
+            <label> Bill_ID Selected :</label>
+            <input type="text" name="bill_id" id="billid" required readonly/><br><br>
+            <input type="hidden" name="hiddenuserid5" value={{user_id}}>
             <button type=submit class="anybutton">Submit</button>
         </form>
     </div>
