@@ -572,12 +572,12 @@ def postconfirmbookingorder (request) :
     # Your Account SID from twilio.com/console
     account_sid = "ACa146b54a52c221a9a0b309438c3171c5"
     # Your Auth Token from twilio.com/console
-    auth_token  = "8b1983e6e50af6320f2a533518de4709"
+    auth_token  = "bb27ad5ac24a713e7226668a96b5f703"
 
     client = Client(account_sid, auth_token)
      
     message = client.messages.create(
-        to="+917588069659", 
+        to="+919359960809", 
         from_="+16308844509",
         body="Your Order has been Confirmed Your Bill Id is :"+bill_id+"\n"+"You Booked your order on :"+datee)
 
@@ -755,12 +755,12 @@ def ordersconfirmedbydispatch(request):
     # Your Account SID from twilio.com/console
     account_sid = "ACa146b54a52c221a9a0b309438c3171c5"
     # Your Auth Token from twilio.com/console
-    auth_token  = "2c31b3403a26c425baf60e1d727f92ef"
+    auth_token  = "bb27ad5ac24a713e7226668a96b5f703"
 
     client = Client(account_sid, auth_token)
      
     message = client.messages.create(
-        to="+917588069659", 
+        to="+919359960809", 
         from_="+16308844509",
         body="Your Order has been Dispatched ,\n having Bill ID(Note this Bill id for Future Use):"+bill_id_dispatch+"\n"+"Dispatched From:"+fromcity_dispatch+"\n"+"Dispatching Date:"+date_dispatch+"\n"+"Your Order is Arriving on:"+date_booking+"\n Your Order is arriving at the location:"+fromcity_booking+"\nas Booked by you")
 
